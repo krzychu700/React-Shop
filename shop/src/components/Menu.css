@@ -1,0 +1,33 @@
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.logoArea {
+  width: 100px;
+  height: 60px;
+}
+
+.logoPicture {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.menuArea {
+  display: flex;
+  justify-content: flex-end
+}
+
+.menuList {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+}
+
+.menuItem {
+  padding: 0 10px;
+}

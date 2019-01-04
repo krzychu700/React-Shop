@@ -1,0 +1,22 @@
+.product {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: bisque;
+  margin: 10px;
+}
+
+.productPictureArea {
+  height: 130px;
+  width: 130px;
+  overflow: hidden;
+}
+
+.productPicture {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
