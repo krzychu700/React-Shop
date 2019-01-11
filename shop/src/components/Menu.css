@@ -1,13 +1,16 @@
 .menu {
+  margin: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 50px;
+  width: 1168px;
+  height: 29px;
 }
 
 .logoArea {
-  width: 100px;
-  height: 60px;
+  width: 80px;
+  height: 100%;
 }
 
 .logoPicture {
@@ -29,5 +32,19 @@
 }
 
 .menuItem {
-  padding: 0 10px;
+  margin: 0 10px;
+  height: 12px;
+  opacity: 0.5;
+  color: #000000;
+  font-family: "Myriad Pro";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-transform: uppercase;
+  letter-spacing: 6.4px;
+  cursor: pointer;
+}
+
+.menuItem--Active {
+  opacity: inherit;
 }

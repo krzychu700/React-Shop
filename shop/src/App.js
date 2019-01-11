@@ -3,30 +3,29 @@ import "./App.css";
 import Product from "./components/Products.js";
 import Menu from "./components/Menu.js";
 import SideBar from "./components/SideBar.js";
-import data from "./Data.json";
+import data from "./data.json";
 
-class App extends Component {
+export class App extends Component {
   state = {
     data: data,
     itemList: [],
-    page: 1
+    page: 0,
+    active: 1
+    // activeMenu: "home"
   };
 
-  strony = () => {
+  pagesNumber = () => {
     let a = data.length;
     let page = this.state.page;
-    console.log(a);
-    if (a > 4 && page <= a / 4) {
+    if (a > 10 && page <= a / 10) {
       let i = 0;
-      for (i = 0; i < a; i = i + 4) {
+      for (i = 0; i < a; i = i + 10) {
         page++;
       }
       this.setState({
         page
       });
     }
-
-    console.log(page);
   };
 
   onSortPriceDescending = () => {
@@ -35,6 +34,7 @@ class App extends Component {
         return b.price - a.price;
       })
     });
+    this.prostaFunkcja(this.state.active);
   };
 
   onSortPriceAscending = () => {
@@ -43,6 +43,7 @@ class App extends Component {
         return a.price - b.price;
       })
     });
+    this.prostaFunkcja(this.state.active);
   };
 
   onSortNameAscending = () => {
@@ -51,11 +52,12 @@ class App extends Component {
         return a.name.localeCompare(b.name);
       })
     });
+    this.prostaFunkcja(this.state.active);
   };
 
   prostaFunkcja = page => {
     this.setState({
-      itemList: this.state.data.splice((page - 1) * 10, page * 10 - 1)
+      itemList: this.state.data.slice((page - 1) * 10, page * 10 - 1)
     });
   };
 
@@ -65,10 +67,36 @@ class App extends Component {
         return b.name.localeCompare(a.name);
       })
     });
+    this.prostaFunkcja(this.state.active);
   };
 
+  activePageNumber = e => {
+    const clicked = e.target.id;
+    this.setState(
+      {
+        active: clicked
+      },
+      function stateUpdateComplete() {
+        this.prostaFunkcja(this.state.active);
+      }.bind(this)
+    );
+  };
+
+  // activeMenuPage = e => {
+  //   const clicked = e.target.id;
+  //   console.log(clicked);
+  //   this.setState({
+  //     activeMenu: clicked
+  //   });
+  // };
+
+  componentDidMount() {
+    this.pagesNumber();
+    this.prostaFunkcja(this.state.active);
+  }
+
   render() {
-    const product = this.state.data.map(item => (
+    const product = this.state.itemList.map(item => (
       <Product
         key={item.id}
         name={item.name}
@@ -77,27 +105,40 @@ class App extends Component {
       />
     ));
 
-    const aaa = [...Array(this.state.page)].map((e, item) => (
-      <button>{item + 1}</button>
+    const numberOfPage = [...Array(this.state.page)].map((e, item) => (
+      <li
+        className={
+          item + 1 == this.state.active ? "pagesItem active" : "pagesItem"
+        }
+        key={item + 1}
+        id={item + 1}
+        onClick={this.activePageNumber}
+      >
+        {item < 9 ? `0${item + 1}` : item + 1}
+      </li>
     ));
 
     return (
       <div className="pageLayout">
-        <button onClick={this.strony}>sda</button>
-        <Menu />
+        {/* <Menu
+          activeMenu={this.state.activeMenu}
+          activeMenuPage={this.activeMenuPage}
+        /> */}
         <div className="pageContainer">
-          <div>{aaa}</div>
           <SideBar
             onSortPriceDescending={this.onSortPriceDescending}
             onSortPriceAscending={this.onSortPriceAscending}
             onSortNameAscending={this.onSortNameAscending}
             onSortNameDescending={this.onSortNameDescending}
           />
-          <div className="productsList">{product}</div>
+          <div>
+            <div className="productsList">{product}</div>
+            <div className="pages">
+              <ul className="pagesList">{numberOfPage}</ul>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
-
-export default App;
