@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Menu } from "./Menu";
+import { Menu } from "../presentational/menu.component";
 
-export class MainLayout extends Component {
+class MainLayout extends Component {
   render() {
     return (
       <div>
@@ -11,3 +11,5 @@ export class MainLayout extends Component {
     );
   }
 }
+
+export default MainLayout;

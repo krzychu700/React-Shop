@@ -1,17 +1,15 @@
 import React from "react";
 import Product from "./product.component";
-import "../App.css";
+import "./productList.css";
+import { Link } from "react-router-dom";
 
 const ProductList = props => (
-  <div>
+  <div className="productsList">
     {props.item.map(item => {
       return (
-        <Product
-          key={item.id}
-          name={item.name}
-          price={item.price}
-          picture={item.picture}
-        />
+        <Link to={"product/" + item.id} key={item.id}>
+          <Product name={item.name} price={item.price} picture={item.picture} />
+        </Link>
       );
     })}
   </div>

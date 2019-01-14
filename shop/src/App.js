@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Product from "./components/Products.js";
-import Menu from "./components/Menu.js";
-import SideBar from "./components/SideBar.js";
 import data from "./data.json";
 
 export class App extends Component {
