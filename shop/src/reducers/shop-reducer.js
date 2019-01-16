@@ -6,6 +6,9 @@ import {
   GET_PRODUCTS_ON_PAGE,
   ACTIVE_PAGE,
   GET_PRODUCT,
+  ADD_TO_CART,
+  DEL_FROM_CART,
+  UPDATE_CART,
   AA
 } from "../actions/actions";
 import data from "../data.json";
@@ -19,7 +22,9 @@ const initialState = {
     by: "name",
     order: "desc"
   },
-  selectedProduct: {}
+  selectedProduct: {},
+  cart: [],
+  cartID: null
 };
 
 const shopReducer = function(state = initialState, action) {
@@ -42,13 +47,9 @@ const shopReducer = function(state = initialState, action) {
           return b.name.localeCompare(a.name);
         }
       });
-      const activePage = state.data.slice(
-        (state.active - 1) * 10,
-        state.active * 10 - 1
-      );
 
       return Object.assign({}, state, {
-        itemList: [...activePage],
+        itemList: [...sortedItem],
         sortParams: {
           by: sortBy,
           order: sortOrder
@@ -71,7 +72,6 @@ const shopReducer = function(state = initialState, action) {
       });
 
     case GET_PRODUCTS_ON_PAGE:
-      console.log("2");
       const activePage = state.data.slice(
         (state.active - 1) * 10,
         state.active * 10 - 1
@@ -82,6 +82,7 @@ const shopReducer = function(state = initialState, action) {
 
     case ACTIVE_PAGE:
       const clickedNumberOfPage = action.number;
+
       return Object.assign({}, state, {
         active: clickedNumberOfPage
       });
@@ -92,17 +93,43 @@ const shopReducer = function(state = initialState, action) {
       );
       return Object.assign({}, state, { selectedProduct });
 
+    case ADD_TO_CART:
+      const choosenProduct = state.data.find(
+        product => product.id == action.id
+      );
+      return Object.assign({}, state, {
+        cart: [...state.cart, choosenProduct],
+        cartID: action.id
+      });
+
+    case DEL_FROM_CART:
+      const selectedProductToRemove = state.cart.filter(
+        product => product.id !== action.id
+      );
+      return Object.assign({}, state, {
+        cart: [...selectedProductToRemove]
+      });
+
+    case UPDATE_CART:
+      console.log("done");
+      return Object.assign({}, state, {
+        cart: state.cart
+      });
+
     case AA:
+      const ddd = action.active;
       const bbb = action.by;
       const ccc = action.order;
-      const ddd = action.active;
+
+      console.log(bbb);
+      console.log(ccc);
+      console.log(ddd);
       return Object.assign({}, state, {
-        active: ddd,
-        sortParams: {
-          by: bbb,
-          order: ccc
-          //...action.sortParams
-        }
+        active: ddd
+        // sortParams: {
+        //   by: bbb,
+        //   order: ccc
+        // }
       });
   }
 

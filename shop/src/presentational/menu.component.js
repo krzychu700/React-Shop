@@ -12,50 +12,28 @@ export const Menu = props => {
 
       <div className="menuArea">
         <ul className="menuList">
-          <li
-            className={
-              "home" === props.activeMenu
-                ? "menuItem menuItem--Active"
-                : "menuItem"
-            }
-            id="home"
-            onClick={props.activeMenuPage}
-          >
-            <NavLink to="/">Home</NavLink>
+          <li className={"menuItem"}>
+            <NavLink
+              to={
+                "/" +
+                props.active +
+                "/" +
+                props.sortParams.by +
+                "/" +
+                props.sortParams.order
+              }
+            >
+              Home
+            </NavLink>
           </li>
-          <li
-            className={
-              "faq" === props.activeMenu
-                ? "menuItem menuItem--Active"
-                : "menuItem"
-            }
-            id="faq"
-            onClick={props.activeMenuPage}
-          >
+          <li className={"menuItem"}>
             <NavLink to="/faq">FAQ</NavLink>
           </li>
-          <li
-            className={
-              "regulamin" === props.activeMenu
-                ? "menuItem menuItem--Active"
-                : "menuItem"
-            }
-            id="regulamin"
-            onClick={props.activeMenuPage}
-          >
-            Regulamin
+          <li className={"menuItem"}>
+            <NavLink to="/cart">Koszyk</NavLink>
           </li>
-          <li
-            className={
-              "kontakt" === props.activeMenu
-                ? "menuItem menuItem--Active"
-                : "menuItem"
-            }
-            id="kontakt"
-            onClick={props.activeMenuPage}
-          >
-            Kontakt
-          </li>
+          <li className={"menuItem"}>Regulamin</li>
+          <li className={"menuItem"}>Kontakt</li>
         </ul>
       </div>
       <div>{props.children}</div>

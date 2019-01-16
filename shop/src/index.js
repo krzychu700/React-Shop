@@ -9,16 +9,19 @@ import { Provider } from "react-redux";
 import Menu from "./containers/menu-container.component";
 import DevTols from "./DevTools";
 import ProductDetail from "./containers/productDetail-container.component";
+import PageNotFound from "./presentational/pageNumber.component";
+import Cart from "./containers/cart-container.component";
 
 render(
   <Provider store={store}>
     <BrowserRouter>
       <Menu>
         <Switch>
-          <Route exact path={"/"} component={MainLayout} />
+          {/* <Route path={"*"} component={PageNotFound} /> */}
+          <Route exact path={"/:id/:by/:order"} component={MainLayout} />
+          <Route path={"/cart"} component={Cart} />
           <Route path={"/product/:id"} component={ProductDetail} />
           <Route path={"/faq"} component={FAQ} />
-          {/* <Route exact path="*" component={PageNotFound} /> */}
         </Switch>
         <DevTols />
       </Menu>

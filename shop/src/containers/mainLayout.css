@@ -5,12 +5,12 @@
 }
 
 #root {
-  width: 1000px;
-  height: 1000px;
+  width: 1800px;
+  height: 600px;
   margin: auto;
 }
 
 .pageContainer {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }

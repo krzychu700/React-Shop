@@ -23,7 +23,12 @@ const ProductDetail = props => (
           congue bibendum sapien a faucibus. Curabitur non ante a magna maximus
           accumsan.
         </p>
-        <button className="buttonCart">Dodaj do koszyka</button>
+        <button
+          className="buttonCart"
+          onClick={() => props.getAA(props.product.id)}
+        >
+          Dodaj do koszyka
+        </button>
       </div>
     </div>
   </div>

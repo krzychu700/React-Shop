@@ -1,27 +1,40 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ProductDetail from "../presentational/productDetail.component";
+import Cart from "../presentational/cart.component";
 import { withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/actions";
 
-class ProductDetailContainer extends Component {
+class CartContainer extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.actions.getProduct(this.props.match.params.id);
-    console.log(this.props.actions.getProduct(this.props.match.params.id));
+    // this.props.actions.getProduct(this.props.match.params.id);
   }
 
-  getAA = id => {
-    this.props.actions.addToCart(id);
+  componentDidUpdate(prevProps) {
+    if (this.props.cart !== prevProps.cart) {
+      this.props.actions.updateCart();
+    }
+  }
+
+  delProduct = id => {
+    let aa = 0;
+    aa = id;
+    console.log(id);
+    return this.props.actions.defFromCart(id);
   };
+
   render() {
     return (
-      <ProductDetail product={this.props.selectedProduct} getAA={this.getAA} />
+      <Cart
+        product={this.props.selectedProduct}
+        cart={this.props.cart}
+        delProduct={this.delProduct}
+      />
     );
   }
 }
@@ -43,5 +56,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ProductDetailContainer)
+  )(CartContainer)
 );

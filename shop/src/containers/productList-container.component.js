@@ -14,17 +14,37 @@ class ProductListContainer extends Component {
 
   componentDidMount() {
     this.props.actions.pagesNumbers();
+    this.props.actions.getProductsOnPage();
+    this.props.actions.getProducts();
+    this.props.actions.sort({
+      by: this.props.match.params.by,
+      order: this.props.match.params.order
+    });
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.active !== prevProps.active) {
+    this.props.actions.activePage(this.props.match.params.id);
+
+    if (
+      this.props.active !== prevProps.active ||
+      this.props.sortParams.by !== prevProps.sortParams.by ||
+      this.props.sortParams.order !== prevProps.sortParams.order
+    ) {
       this.props.actions.getProductsOnPage();
     }
-  }
-
-  activePage(e) {
-    // this.props.actions.activePage(e.target.value);
-    console.log(e.target.value);
+    // if (
+    //   this.props.match.params.id !== prevProps.active ||
+    //   this.props.match.params.by !== prevProps.sortParams.by ||
+    //   this.props.match.params.order !== prevProps.sortParams.order
+    // ) {
+    //   console.log(
+    //   this.props.actions.aa(
+    //     this.props.match.params.id,
+    //     this.props.match.params.by,
+    //     this.props.match.params.order
+    //   );
+    //   );
+    // }
   }
 
   click(e) {
@@ -40,8 +60,6 @@ class ProductListContainer extends Component {
             <PageNumbers
               page={this.props.page}
               sortParams={this.props.sortParams}
-              activePage={this.activePage}
-              // onClick={this.activePage.bind(this)}
             />
           </ul>
         </div>

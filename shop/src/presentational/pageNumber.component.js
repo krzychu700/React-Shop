@@ -14,12 +14,25 @@ const PageNumbers = props => (
       //   key={item + 1}
       // >
       <Link
-        to={"/"}
+        to={
+          "/" +
+          parseInt(item + 1) +
+          "/" +
+          props.sortParams.by +
+          "/" +
+          props.sortParams.order
+        }
         key={item + 1}
         value={item + 1}
-        onClick={() => props.activePage()}
       >
-        <li className="pagesItem">{item < 9 ? `0${item + 1}` : item + 1}</li>
+        <li
+          className="pagesItem"
+          value={item + 1}
+          data-by={props.sortParams.by}
+          data-order={props.sortParams.order}
+        >
+          {item < 9 ? `0${item + 1}` : item + 1}{" "}
+        </li>
       </Link>
     ))}
   </div>
