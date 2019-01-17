@@ -4,15 +4,6 @@ import { Link } from "react-router-dom";
 const PageNumbers = props => (
   <div>
     {[...Array(props.page)].map((e, item) => (
-      // <Link
-      //   to={
-      //     "/" +
-      //     props.sortParams.by +
-      //     props.sortParams.order +
-      //     parseInt(item + 1)
-      //   }
-      //   key={item + 1}
-      // >
       <Link
         to={
           "/" +

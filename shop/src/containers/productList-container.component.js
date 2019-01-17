@@ -14,12 +14,12 @@ class ProductListContainer extends Component {
 
   componentDidMount() {
     this.props.actions.pagesNumbers();
-    this.props.actions.getProductsOnPage();
     this.props.actions.getProducts();
     this.props.actions.sort({
       by: this.props.match.params.by,
       order: this.props.match.params.order
     });
+    this.props.actions.getProductsOnPage();
   }
 
   componentDidUpdate(prevProps) {
@@ -28,7 +28,8 @@ class ProductListContainer extends Component {
     if (
       this.props.active !== prevProps.active ||
       this.props.sortParams.by !== prevProps.sortParams.by ||
-      this.props.sortParams.order !== prevProps.sortParams.order
+      this.props.sortParams.order !== prevProps.sortParams.order ||
+      this.props.page !== prevProps.page
     ) {
       this.props.actions.getProductsOnPage();
     }

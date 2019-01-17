@@ -45,7 +45,14 @@ const Cart = props => (
     })}
     <div className="cartFinishArea">
       <p className="cartProduct cartProduct--grey">kod rabatowy</p>
-      <p className="cartProduct">TOTAL:</p>
+      <p className="cartProduct">
+        TOTAL:
+        {` $${parseFloat(
+          props.cart.reduce(function(previousValue, currentValue) {
+            return previousValue + currentValue.price;
+          }, 0)
+        ).toFixed(2)} `}
+      </p>
       <button className="buttonBuy">Zapłać</button>
     </div>
   </div>

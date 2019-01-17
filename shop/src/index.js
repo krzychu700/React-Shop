@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { MainLayout } from "./containers/mainLayout-container";
 import { FAQ } from "./presentational/FAQ.component";
 import store from "../src/store/index";
@@ -17,11 +17,12 @@ render(
     <BrowserRouter>
       <Menu>
         <Switch>
-          {/* <Route path={"*"} component={PageNotFound} /> */}
+          {/* <Redirect from="/" to="/1/name/asc" /> */}
           <Route exact path={"/:id/:by/:order"} component={MainLayout} />
           <Route path={"/cart"} component={Cart} />
           <Route path={"/product/:id"} component={ProductDetail} />
           <Route path={"/faq"} component={FAQ} />
+          <Route component={PageNotFound} />
         </Switch>
         <DevTols />
       </Menu>
