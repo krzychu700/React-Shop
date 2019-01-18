@@ -46,6 +46,8 @@ class ProductListContainer extends Component {
     //   );
     //   );
     // }
+
+    //sprawdzac matche w jednym ifie, w drugim propsy
   }
 
   click(e) {
@@ -53,6 +55,7 @@ class ProductListContainer extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <ProductList item={this.props.itemList} click={this.click} />

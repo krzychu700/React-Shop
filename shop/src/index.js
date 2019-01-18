@@ -18,6 +18,7 @@ render(
       <Menu>
         <Switch>
           {/* <Redirect from="/" to="/1/name/asc" /> */}
+          <Route exact path={"/"} component={MainLayout} />
           <Route exact path={"/:id/:by/:order"} component={MainLayout} />
           <Route path={"/cart"} component={Cart} />
           <Route path={"/product/:id"} component={ProductDetail} />

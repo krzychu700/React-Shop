@@ -16,7 +16,7 @@ import data from "../data.json";
 const initialState = {
   data: data,
   itemList: [],
-  page: 0,
+  page: 1,
   active: 1,
   sortParams: {
     by: "name",

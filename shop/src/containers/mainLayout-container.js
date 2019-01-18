@@ -7,8 +7,10 @@ export class MainLayout extends Component {
   render() {
     return (
       <div className="pageContainer">
-        <SideBar />
-        <ProductList />
+        <>
+          <SideBar />
+          <ProductList />
+        </>
       </div>
     );
   }

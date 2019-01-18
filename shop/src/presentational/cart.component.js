@@ -33,7 +33,7 @@ const Cart = props => (
                 <p className="cartProduct">szt</p>
                 <span
                   className="cartDelProductButton"
-                  onClick={() => props.delProduct(props.product.id)}
+                  onClick={() => props.delProduct(product.id)}
                 >
                   usuń produkt
                 </span>
