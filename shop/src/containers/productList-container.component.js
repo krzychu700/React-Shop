@@ -14,25 +14,18 @@ class ProductListContainer extends Component {
 
   componentDidMount() {
     this.props.actions.pagesNumbers();
-    this.props.actions.getProducts();
-    this.props.actions.sort({
-      by: this.props.match.params.by,
-      order: this.props.match.params.order
-    });
-    this.props.actions.getProductsOnPage();
   }
 
   componentDidUpdate(prevProps) {
-    this.props.actions.activePage(this.props.match.params.id);
-
-    if (
-      this.props.active !== prevProps.active ||
-      this.props.sortParams.by !== prevProps.sortParams.by ||
-      this.props.sortParams.order !== prevProps.sortParams.order ||
-      this.props.page !== prevProps.page
-    ) {
-      this.props.actions.getProductsOnPage();
-    }
+    // this.props.actions.activePage(this.props.match.params.id);
+    // if (
+    //   this.props.active !== prevProps.active ||
+    //   this.props.sortParams.by !== prevProps.sortParams.by ||
+    //   this.props.sortParams.order !== prevProps.sortParams.order ||
+    //   this.props.page !== prevProps.page
+    // ) {
+    //   this.props.actions.getProductsOnPage();
+    // }
     // if (
     //   this.props.match.params.id !== prevProps.active ||
     //   this.props.match.params.by !== prevProps.sortParams.by ||
@@ -46,7 +39,6 @@ class ProductListContainer extends Component {
     //   );
     //   );
     // }
-
     //sprawdzac matche w jednym ifie, w drugim propsy
   }
 
@@ -55,7 +47,6 @@ class ProductListContainer extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <ProductList item={this.props.itemList} click={this.click} />

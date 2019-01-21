@@ -1,5 +1,4 @@
 export const SORT = "SORT";
-export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_PAGES_NUMBERS = "GET_PAGES_NUMBERS";
 export const GET_PRODUCTS_ON_PAGE = "GET_PRODUCTS_ON_PAGE";
 export const ACTIVE_PAGE = "ACTIVE_PAGE";
@@ -13,12 +12,6 @@ export function sort(sortParams) {
   return {
     type: SORT,
     sortParams
-  };
-}
-
-export function getProducts() {
-  return {
-    type: GET_PRODUCTS
   };
 }
 
