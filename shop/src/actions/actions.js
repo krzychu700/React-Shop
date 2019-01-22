@@ -6,6 +6,7 @@ export const GET_PRODUCT = "GET_PRODUCT";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DEL_FROM_CART = "DEL_FROM_CART";
 export const UPDATE_CART = "UPDATE_CART";
+export const PRODUCT_IN_CART_COUNTER = "PRODUCT_IN_CART_COUNTER";
 export const AA = "AA";
 
 export function sort(sortParams) {
@@ -61,7 +62,14 @@ export function defFromCart(id) {
   };
 }
 
-export function aa(by, order, active) {
+export function productInCartCount(id) {
+  return {
+    type: PRODUCT_IN_CART_COUNTER,
+    id
+  };
+}
+
+export function aa(active, by, order) {
   return {
     type: AA,
     active,

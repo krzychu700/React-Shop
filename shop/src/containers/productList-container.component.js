@@ -18,25 +18,27 @@ class ProductListContainer extends Component {
 
   componentDidUpdate(prevProps) {
     // this.props.actions.activePage(this.props.match.params.id);
+    if (this.props.match.params.id !== prevProps.active) {
+      this.props.actions.activePage(this.props.match.params.id);
+    }
+    if (
+      this.props.active !== prevProps.active ||
+      this.props.sortParams.by !== prevProps.sortParams.by ||
+      this.props.sortParams.order !== prevProps.sortParams.order ||
+      this.props.page !== prevProps.page
+    ) {
+      this.props.actions.getProductsOnPage();
+    }
     // if (
-    //   this.props.active !== prevProps.active ||
-    //   this.props.sortParams.by !== prevProps.sortParams.by ||
-    //   this.props.sortParams.order !== prevProps.sortParams.order ||
-    //   this.props.page !== prevProps.page
+    //   this.props.match.params.id !== this.props.active ||
+    //   this.props.match.params.by !== this.props.sortParams.by ||
+    //   this.props.match.params.order !== this.props.sortParams.order
     // ) {
-    //   this.props.actions.getProductsOnPage();
-    // }
-    // if (
-    //   this.props.match.params.id !== prevProps.active ||
-    //   this.props.match.params.by !== prevProps.sortParams.by ||
-    //   this.props.match.params.order !== prevProps.sortParams.order
-    // ) {
-    //   console.log(
+    //   console.log("działa");
     //   this.props.actions.aa(
     //     this.props.match.params.id,
     //     this.props.match.params.by,
     //     this.props.match.params.order
-    //   );
     //   );
     // }
     //sprawdzac matche w jednym ifie, w drugim propsy

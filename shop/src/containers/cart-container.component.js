@@ -15,17 +15,21 @@ class CartContainer extends Component {
     // this.props.actions.getProduct(this.props.match.params.id);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.cart !== prevProps.cart) {
-      this.props.actions.updateCart();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.cart !== prevProps.cart) {
+  //     this.props.actions.updateCart();
+  //   }
+  // }
 
   delProduct = id => {
-    let aa = 0;
-    aa = id;
-    console.log(id);
+    // let aa = 0;
+    // aa = id;
+    // console.log(id);
     return this.props.actions.defFromCart(id);
+  };
+
+  cartCounter = id => {
+    return this.props.actions.productInCartCount(id);
   };
 
   render() {
@@ -34,6 +38,7 @@ class CartContainer extends Component {
         product={this.props.selectedProduct}
         cart={this.props.cart}
         delProduct={this.delProduct}
+        cartCounter={this.cartCounter}
       />
     );
   }

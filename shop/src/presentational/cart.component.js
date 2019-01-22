@@ -28,8 +28,13 @@ const Cart = props => (
                   product.price
                 ).toFixed(2)}`}</p>
                 <span className="cartProduct cartProductClick">-</span>
-                <p className="cartProduct">1</p>
-                <span className="cartProduct cartProductClick">+</span>
+                <p className="cartProduct">{product.count}</p>
+                <span
+                  className="cartProduct cartProductClick"
+                  onClick={() => props.cartCounter(product.id)}
+                >
+                  +
+                </span>
                 <p className="cartProduct">szt</p>
                 <span
                   className="cartDelProductButton"
@@ -49,7 +54,7 @@ const Cart = props => (
         TOTAL:
         {` $${parseFloat(
           props.cart.reduce(function(previousValue, currentValue) {
-            return previousValue + currentValue.price;
+            return previousValue + currentValue.price * currentValue.count;
           }, 0)
         ).toFixed(2)} `}
       </p>
