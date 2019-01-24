@@ -86,5 +86,11 @@
     "name": "dsazbuty2",
     "price": 2,
     "picture": "/img/2.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Piękne buty",
+    "price": 999,
+    "picture": "/img/1.jpg"
   }
 ]

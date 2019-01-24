@@ -24,8 +24,7 @@ const initialState = {
     order: "desc"
   },
   selectedProduct: {},
-  cart: [],
-  cartID: null
+  cart: []
 };
 
 const shopReducer = function(state = initialState, action) {
@@ -81,6 +80,23 @@ const shopReducer = function(state = initialState, action) {
     });
   }
 
+  //function responsible for calculation of number of proper product in cart
+
+  function productInCartCounter(state, action) {
+    const objIndex = state.cart.findIndex(product => product.id == action.id);
+    const updatedObj = {
+      ...state.cart[objIndex],
+      count: (state.cart[objIndex].count += action.value)
+    };
+    return Object.assign({}, state, {
+      cart: [
+        ...state.cart.slice(0, objIndex),
+        updatedObj,
+        ...state.cart.slice(objIndex + 1)
+      ]
+    });
+  }
+
   // function aa(action) {
   //   const ddd = action.active;
   //   const bbb = action.by;
@@ -107,7 +123,6 @@ const shopReducer = function(state = initialState, action) {
     }
 
     case GET_PRODUCTS_ON_PAGE: {
-      // return getProductsOnPagea(state);
       const activePage = state.data.slice(
         (state.active - 1) * 10,
         state.active * 10 - 1
@@ -134,15 +149,34 @@ const shopReducer = function(state = initialState, action) {
       return Object.assign({}, state, { selectedProduct });
 
     case ADD_TO_CART:
-      const count = 3;
+      let count = 1;
       const choosenProduct = state.data.find(
         product => product.id == action.id
       );
-      choosenProduct.count = count;
-      return Object.assign({}, state, {
-        cart: [...state.cart, choosenProduct],
-        cartID: action.id
-      });
+      const productInCart = state.cart.find(
+        product => product.id == choosenProduct.id
+      );
+      if (productInCart) {
+        const objIndex = state.cart.findIndex(
+          product => product.id == action.id
+        );
+        const updatedObj = {
+          ...state.cart[objIndex],
+          count: (state.cart[objIndex].count += 1)
+        };
+        return Object.assign({}, state, {
+          cart: [
+            ...state.cart.slice(0, objIndex),
+            updatedObj,
+            ...state.cart.slice(objIndex + 1)
+          ]
+        });
+      } else {
+        choosenProduct.count = count;
+        return Object.assign({}, state, {
+          cart: [...state.cart, choosenProduct]
+        });
+      }
 
     case DEL_FROM_CART:
       const selectedProductToRemove = state.cart.filter(
@@ -153,12 +187,7 @@ const shopReducer = function(state = initialState, action) {
       });
 
     case PRODUCT_IN_CART_COUNTER:
-      let updatedCounter = state.data.find(product => product.id == action.id);
-      updatedCounter = updatedCounter.count + 1;
-      console.log(updatedCounter);
-    // return Object.assign({}, state, {
-    //   cart: [...state.cart, updatedCounter]
-    // });
+      return productInCartCounter(state, action);
 
     // case UPDATE_CART:
     //   console.log("done");

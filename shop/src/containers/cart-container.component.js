@@ -11,25 +11,14 @@ class CartContainer extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    // this.props.actions.getProduct(this.props.match.params.id);
-  }
+  componentDidMount() {}
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.cart !== prevProps.cart) {
-  //     this.props.actions.updateCart();
-  //   }
-  // }
-
-  delProduct = id => {
-    // let aa = 0;
-    // aa = id;
-    // console.log(id);
+  handleClickDelProduct = id => {
     return this.props.actions.defFromCart(id);
   };
 
-  cartCounter = id => {
-    return this.props.actions.productInCartCount(id);
+  handleClickCartCounter = (id, value) => {
+    return this.props.actions.productInCartCount(id, value);
   };
 
   render() {
@@ -37,8 +26,8 @@ class CartContainer extends Component {
       <Cart
         product={this.props.selectedProduct}
         cart={this.props.cart}
-        delProduct={this.delProduct}
-        cartCounter={this.cartCounter}
+        clickDelProduct={this.handleClickDelProduct}
+        clickCartCounter={this.handleClickCartCounter}
       />
     );
   }

@@ -27,18 +27,31 @@ const Cart = props => (
                 <p className="cartProduct cartProduct--grey">{`$${parseFloat(
                   product.price
                 ).toFixed(2)}`}</p>
-                <span className="cartProduct cartProductClick">-</span>
+                <span
+                  className={
+                    product.count > 1
+                      ? "cartProduct cartProductClick"
+                      : "cartProduct cartProductDisabled"
+                  }
+                  onClick={() =>
+                    product.count === 1
+                      ? null
+                      : props.clickCartCounter(product.id, -1)
+                  }
+                >
+                  -
+                </span>
                 <p className="cartProduct">{product.count}</p>
                 <span
                   className="cartProduct cartProductClick"
-                  onClick={() => props.cartCounter(product.id)}
+                  onClick={() => props.clickCartCounter(product.id, 1)}
                 >
                   +
                 </span>
                 <p className="cartProduct">szt</p>
                 <span
                   className="cartDelProductButton"
-                  onClick={() => props.delProduct(product.id)}
+                  onClick={() => props.clickDelProduct(product.id)}
                 >
                   usuń produkt
                 </span>

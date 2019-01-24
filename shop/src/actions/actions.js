@@ -62,10 +62,11 @@ export function defFromCart(id) {
   };
 }
 
-export function productInCartCount(id) {
+export function productInCartCount(id, value) {
   return {
     type: PRODUCT_IN_CART_COUNTER,
-    id
+    id,
+    value
   };
 }
 

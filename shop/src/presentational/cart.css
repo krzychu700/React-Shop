@@ -93,6 +93,11 @@
   opacity: 0.7;
 }
 
+.cartProductDisabled {
+  opacity: 0.7;
+  color: grey;
+}
+
 .cartProductClick {
   cursor: pointer;
 }

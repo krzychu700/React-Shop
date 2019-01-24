@@ -13,7 +13,6 @@ class ProductDetailContainer extends Component {
 
   componentDidMount() {
     this.props.actions.getProduct(this.props.match.params.id);
-    console.log(this.props.actions.getProduct(this.props.match.params.id));
   }
 
   getAA = id => {
