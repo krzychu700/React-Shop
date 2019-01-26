@@ -11,7 +11,7 @@ class SideBar extends Component {
       <div>
         <span> Sortuj:</span>
         <ul>
-          <Link to={"/" + this.props.active + "/name/asc"}>
+          <Link className="link" to={"/" + this.props.active + "/name/asc"}>
             <li
               className="sideBarItem"
               onClick={this.props.actions.sort.bind(this, {
@@ -22,7 +22,7 @@ class SideBar extends Component {
               Nazwa A-Z
             </li>
           </Link>
-          <Link to={"/" + this.props.active + "/name/desc"}>
+          <Link className="link" to={"/" + this.props.active + "/name/desc"}>
             <li
               className="sideBarItem"
               onClick={this.props.actions.sort.bind(this, {
@@ -33,7 +33,7 @@ class SideBar extends Component {
               Nazwa Z-A
             </li>
           </Link>
-          <Link to={"/" + this.props.active + "/price/asc"}>
+          <Link className="link" to={"/" + this.props.active + "/price/asc"}>
             <li
               className="sideBarItem"
               onClick={this.props.actions.sort.bind(this, {
@@ -44,7 +44,7 @@ class SideBar extends Component {
               Cena rosnąco
             </li>
           </Link>
-          <Link to={"/" + this.props.active + "/price/desc"}>
+          <Link className="link" to={"/" + this.props.active + "/price/desc"}>
             <li
               className="sideBarItem"
               onClick={this.props.actions.sort.bind(this, {

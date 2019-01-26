@@ -3,6 +3,8 @@ import { render } from "react-dom";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { MainLayout } from "./containers/mainLayout-container";
 import { FAQ } from "./presentational/FAQ.component";
+import { Eula } from "./presentational/eula.component";
+import { Contact } from "./presentational/contact.component";
 import store from "../src/store/index";
 import { getProductsOnPage } from "../src/actions/actions";
 import { Provider } from "react-redux";
@@ -23,6 +25,8 @@ render(
           <Route path={"/cart"} component={Cart} />
           <Route path={"/product/:id"} component={ProductDetail} />
           <Route path={"/faq"} component={FAQ} />
+          <Route path={"/eula"} component={Eula} />
+          <Route path={"/contact"} component={Contact} />
           <Route component={PageNotFound} />
         </Switch>
         <DevTols />

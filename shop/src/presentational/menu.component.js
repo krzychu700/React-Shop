@@ -14,6 +14,7 @@ export const Menu = props => {
         <ul className="menuList">
           <li className={"menuItem"}>
             <NavLink
+              className="link"
               to={
                 "/" +
                 props.active +
@@ -27,13 +28,25 @@ export const Menu = props => {
             </NavLink>
           </li>
           <li className={"menuItem"}>
-            <NavLink to="/faq">FAQ</NavLink>
+            <NavLink className="link" to="/faq">
+              FAQ
+            </NavLink>
           </li>
           <li className={"menuItem"}>
-            <NavLink to="/cart">Koszyk</NavLink>
+            <NavLink className="link" to="/eula">
+              Regulamin
+            </NavLink>
           </li>
-          <li className={"menuItem"}>Regulamin</li>
-          <li className={"menuItem"}>Kontakt</li>
+          <li className={"menuItem"}>
+            <NavLink className="link" to="/contact">
+              Kontakt
+            </NavLink>
+          </li>
+          <li className={"menuItem"}>
+            <NavLink className="link" to="/cart">
+              <i className="fas fa-shopping-bag cartIcon" />{" "}
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div>{props.children}</div>

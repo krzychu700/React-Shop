@@ -12,7 +12,7 @@ import {
   AA,
   aa
 } from "../actions/actions";
-import data from "../data.json";
+import data from "../Data.json";
 
 const initialState = {
   data: data,
@@ -139,7 +139,7 @@ const shopReducer = function(state = initialState, action) {
       } else clickedNumberOfPage = action.number;
 
       return Object.assign({}, state, {
-        active: clickedNumberOfPage
+        active: parseInt(clickedNumberOfPage)
       });
 
     case GET_PRODUCT:

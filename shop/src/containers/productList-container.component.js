@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import * as actions from "../actions/actions";
 import ProductList from "../presentational/productList.component";
 import { bindActionCreators } from "redux";
@@ -58,6 +58,27 @@ class ProductListContainer extends Component {
               page={this.props.page}
               sortParams={this.props.sortParams}
             />
+
+            <Link
+              className="link"
+              to={
+                this.props.active === this.props.page
+                  ? "/" +
+                    parseInt(this.props.active) +
+                    "/" +
+                    this.props.sortParams.by +
+                    "/" +
+                    this.props.sortParams.order
+                  : "/" +
+                    parseInt(this.props.active + 1) +
+                    "/" +
+                    this.props.sortParams.by +
+                    "/" +
+                    this.props.sortParams.order
+              }
+            >
+              <i className="fas fa-arrow-right pageArrowRight" />
+            </Link>
           </ul>
         </div>
       </div>

@@ -47,3 +47,9 @@
 .menuItem--Active {
   opacity: inherit;
 }
+
+.cartIcon {
+  line-height: 25px;
+  height: 40px;
+  opacity: 0.5;
+}
