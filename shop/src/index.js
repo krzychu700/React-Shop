@@ -1,36 +1,37 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { MainLayout } from "./containers/mainLayout-container";
+import { HomeLayout } from "./containers/homeLayout-container";
 import { FAQ } from "./presentational/FAQ.component";
 import { Eula } from "./presentational/eula.component";
 import { Contact } from "./presentational/contact.component";
 import store from "../src/store/index";
 import { getProductsOnPage } from "../src/actions/actions";
 import { Provider } from "react-redux";
-import Menu from "./containers/menu-container.component";
+import MainLayout from "./containers/mainLayout-container.component";
 import DevTols from "./DevTools";
 import ProductDetail from "./containers/productDetail-container.component";
-import PageNotFound from "./presentational/pageNumber.component";
+import { PageNotFound } from "./presentational/PageNotFound.component";
 import Cart from "./containers/cart-container.component";
 
 render(
   <Provider store={store}>
     <BrowserRouter>
-      <Menu>
+      <MainLayout>
         <Switch>
           {/* <Redirect from="/" to="/1/name/asc" /> */}
-          <Route exact path={"/"} component={MainLayout} />
-          <Route exact path={"/:id/:by/:order"} component={MainLayout} />
+          <Route exact path={"/"} component={HomeLayout} />
+          <Route exact path={"/:id/:by/:order"} component={HomeLayout} />
           <Route path={"/cart"} component={Cart} />
           <Route path={"/product/:id"} component={ProductDetail} />
           <Route path={"/faq"} component={FAQ} />
           <Route path={"/eula"} component={Eula} />
           <Route path={"/contact"} component={Contact} />
-          <Route component={PageNotFound} />
+          <Route path={"/error"} render={() => <PageNotFound />} />
+          <Redirect to={"/error"} />
         </Switch>
         <DevTols />
-      </Menu>
+      </MainLayout>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

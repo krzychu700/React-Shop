@@ -47,6 +47,12 @@ const shopReducer = function(state = initialState, action) {
   function sortProduct(state, action) {
     const sortBy = action.sortParams.by;
     const sortOrder = action.sortParams.order;
+    if (
+      sortBy === state.sortParams.by &&
+      sortOrder === state.sortParams.order
+    ) {
+      return state;
+    }
     const sortedItem = state.data.sort((a, b) => {
       if (sortBy === "price" && sortOrder === "desc") {
         return b.price - a.price;
@@ -58,7 +64,6 @@ const shopReducer = function(state = initialState, action) {
         return b.name.localeCompare(a.name);
       }
     });
-    console.log("sort", action.sortParams.order, state, sortedItem);
     return Object.assign({}, state, {
       itemList: [...sortedItem],
       sortParams: {
@@ -70,11 +75,10 @@ const shopReducer = function(state = initialState, action) {
 
   //function responsible for slicing data to show proper number
   function getProductsOnPagea(state) {
-    const productsOnActivePage = state.data.slice(
+    const productsOnActivePage = state.itemList.slice(
       (state.active - 1) * 10,
       state.active * 10 - 1
     );
-    console.log("getProducts", state.itemList);
     return Object.assign({}, state, {
       itemList: [...productsOnActivePage]
     });

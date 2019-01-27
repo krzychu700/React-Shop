@@ -54,10 +54,10 @@ class ProductListContainer extends Component {
         <ProductList item={this.props.itemList} click={this.click} />
         <div className="pages">
           <ul className="pagesList">
-            <PageNumbers
+            {/* <PageNumbers
               page={this.props.page}
               sortParams={this.props.sortParams}
-            />
+            /> */}
 
             <Link
               className="link"
