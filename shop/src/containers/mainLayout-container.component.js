@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Menu } from "../presentational/menu.component";
+import { Footer } from "../presentational/footer.component";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -13,6 +14,7 @@ class MainLayout extends Component {
       <div>
         <Menu active={this.props.active} sortParams={this.props.sortParams} />
         {this.props.children}
+        <Footer active={this.props.active} sortParams={this.props.sortParams} />
       </div>
     );
   }

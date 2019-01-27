@@ -8,7 +8,7 @@ import { bindActionCreators } from "redux";
 class SideBar extends Component {
   render() {
     return (
-      <div>
+      <div className="sideBar">
         <span> Sortuj:</span>
         <ul>
           <Link className="link" to={"/" + this.props.active + "/name/asc"}>

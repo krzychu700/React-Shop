@@ -12,7 +12,7 @@ import {
   AA,
   aa
 } from "../actions/actions";
-import data from "../Data.json";
+import data from "../data.json";
 
 const initialState = {
   data: data,
@@ -32,9 +32,9 @@ const shopReducer = function(state = initialState, action) {
   function initial(state) {
     const productListLength = state.data.length;
     let page = state.page;
-    if (productListLength > 10 && page <= productListLength / 10) {
+    if (productListLength > 6 && page <= productListLength / 6) {
       let i = 0;
-      for (i = 0; i < productListLength; i = i + 10) {
+      for (i = 0; i < productListLength; i = i + 6) {
         page++;
       }
     }
@@ -76,8 +76,8 @@ const shopReducer = function(state = initialState, action) {
   //function responsible for slicing data to show proper number
   function getProductsOnPagea(state) {
     const productsOnActivePage = state.itemList.slice(
-      (state.active - 1) * 10,
-      state.active * 10 - 1
+      (state.active - 1) * 7,
+      state.active * 7 - 1
     );
     return Object.assign({}, state, {
       itemList: [...productsOnActivePage]
@@ -128,8 +128,8 @@ const shopReducer = function(state = initialState, action) {
 
     case GET_PRODUCTS_ON_PAGE: {
       const activePage = state.data.slice(
-        (state.active - 1) * 10,
-        state.active * 10 - 1
+        (state.active - 1) * 6,
+        state.active * 6
       );
       return Object.assign({}, state, {
         itemList: [...activePage]

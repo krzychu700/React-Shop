@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { HomeLayout } from "./containers/homeLayout-container";
+import { HomeLayout } from "./containers/homeLayout-container.component";
 import { FAQ } from "./presentational/FAQ.component";
 import { Eula } from "./presentational/eula.component";
 import { Contact } from "./presentational/contact.component";

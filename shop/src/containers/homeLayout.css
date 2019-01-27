@@ -5,14 +5,14 @@
 }
 
 #root {
-  width: 1800px;
-  height: 600px;
-  margin: auto;
+  width: 620px;
+  height: 900px;
+  margin: 0 auto;
 }
 
 .pageContainer {
   display: flex;
-  /* justify-content: space-between; */
+  width: 100%;
 }
 
 .link {

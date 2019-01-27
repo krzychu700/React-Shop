@@ -1,8 +1,15 @@
+.productListArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
 .productsList {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 800px;
   flex-wrap: wrap;
 }
 
