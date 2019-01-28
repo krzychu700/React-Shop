@@ -1,5 +1,6 @@
 .cartComponent {
-  height: 250px;
+  height: 300px;
+  width: 1000px;
   margin: 10px 0;
   display: flex;
   padding: 20px;
@@ -8,7 +9,8 @@
 }
 
 .cartContainer {
-  height: 200px;
+  height: 250px;
+  width: 100%;
   display: flex;
   margin: 10px 0;
   justify-content: center;
@@ -16,8 +18,8 @@
 }
 
 .cartImageArea {
-  height: 170px;
-  width: 250px;
+  height: 250px;
+  width: 35%;
 }
 
 .cartProductImage {
@@ -27,6 +29,7 @@
 }
 
 .cartProductDescriptions {
+  width: 65%;
   padding-left: 15px;
   height: 100%;
   display: flex;
@@ -35,7 +38,6 @@
 }
 
 .cartProductTitle {
-  width: 101px;
   height: 18px;
   color: #000000;
   font-family: "Myriad Pro";
@@ -49,7 +51,6 @@
 .cartProductText {
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 509px;
   height: 152px;
   color: #000000;
   font-family: "Myriad Pro";
@@ -57,6 +58,14 @@
   font-weight: 400;
   line-height: 27px;
   letter-spacing: 0.9px;
+}
+
+
+.cartProductDescriptionsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
 }
 
 .cartProductBuyingArea {
@@ -77,8 +86,7 @@
 }
 
 .cartProduct {
-  /* width: 53px; */
-  margin: 15px;
+  padding: 15px;
   height: 15px;
   color: #000000;
   font-family: "Myriad Pro";
@@ -121,12 +129,15 @@
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  padding-right: 380px;
+  padding-right: 20px;
 }
 
-/* display: block; or inline-block
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
-  max-height: 3.6em;
-  line-height: 1.8em; */
+.hide {
+  display: none;
+}
+
+.emptyCart {
+  margin: 20px;
+  display: flex;
+  justify-content: flex-end;
+}

@@ -57,6 +57,7 @@ class ProductListContainer extends Component {
             <PageNumbers
               page={this.props.page}
               sortParams={this.props.sortParams}
+              active={this.props.active}
             />
 
             <Link

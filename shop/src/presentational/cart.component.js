@@ -16,7 +16,7 @@ const Cart = props => (
               />
             </div>
             <div className="cartProductDescriptions">
-              <div>
+              <div className="cartProductDescriptionsContainer">
                 <p className="cartProductTitle">{product.name}</p>
                 <p className="cartProductText">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
@@ -61,7 +61,10 @@ const Cart = props => (
         </div>
       );
     })}
-    <div className="cartFinishArea">
+    <div className={props.cart.length != 0 ? "hide" : "emptyCart"}>
+      <h3> Twój koszyk jest pusty :(</h3>
+    </div>
+    <div className={props.cart.length === 0 ? "hide" : "cartFinishArea"}>
       <p className="cartProduct cartProduct--grey">kod rabatowy</p>
       <p className="cartProduct">
         TOTAL:

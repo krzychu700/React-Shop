@@ -14,6 +14,10 @@ export const Menu = props => {
         <ul className="menuList">
           <li className={"menuItem"}>
             <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "black"
+              }}
               className="link"
               to={
                 "/" +
@@ -28,23 +32,59 @@ export const Menu = props => {
             </NavLink>
           </li>
           <li className={"menuItem"}>
-            <NavLink className="link" to="/faq">
+            <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "black"
+              }}
+              className="link"
+              to="/faq"
+            >
               FAQ
             </NavLink>
           </li>
           <li className={"menuItem"}>
-            <NavLink className="link" to="/eula">
+            <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "black"
+              }}
+              className="link"
+              to="/eula"
+            >
               Regulamin
             </NavLink>
           </li>
           <li className={"menuItem"}>
-            <NavLink className="link" to="/contact">
+            <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "black"
+              }}
+              className="link"
+              to="/contact"
+            >
               Kontakt
             </NavLink>
           </li>
-          <li className={"menuItem"}>
-            <NavLink className="link" to="/cart">
-              <i className="fas fa-shopping-bag cartIcon" />{" "}
+          <li className={"menuItem cartIconArea"}>
+            <NavLink
+              activeStyle={{
+                color: "black"
+              }}
+              className="link"
+              to="/cart"
+            >
+              <i className="fas fa-shopping-bag cartIcon" />
+              <div
+                className={props.cart.length > 0 ? "productsInCart" : "hide"}
+              >
+                {parseFloat(
+                  props.cart.reduce(function(previousValue, currentValue) {
+                    return previousValue + currentValue.count;
+                  }, 0)
+                )}
+              </div>
             </NavLink>
           </li>
         </ul>

@@ -12,7 +12,11 @@ class MainLayout extends Component {
   render() {
     return (
       <div>
-        <Menu active={this.props.active} sortParams={this.props.sortParams} />
+        <Menu
+          active={this.props.active}
+          sortParams={this.props.sortParams}
+          cart={this.props.cart}
+        />
         {this.props.children}
         <Footer active={this.props.active} sortParams={this.props.sortParams} />
       </div>
@@ -23,7 +27,8 @@ class MainLayout extends Component {
 let mapStateToProps = function(store) {
   return {
     active: store.shopReducer.active,
-    sortParams: store.shopReducer.sortParams
+    sortParams: store.shopReducer.sortParams,
+    cart: store.shopReducer.cart
   };
 };
 

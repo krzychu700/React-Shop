@@ -37,6 +37,10 @@
   letter-spacing: 1.2px;
 }
 
+.pagesItem--active {
+  opacity: 1;
+}
+
 .pageArrowRight {
   line-height: 28px;
   opacity: 0.4;

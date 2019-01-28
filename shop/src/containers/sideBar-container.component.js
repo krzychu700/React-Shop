@@ -10,7 +10,7 @@ class SideBar extends Component {
     return (
       <div className="sideBar">
         <span> Sortuj:</span>
-        <ul>
+        <ul className="sideBarList">
           <Link className="link" to={"/" + this.props.active + "/name/asc"}>
             <li
               className="sideBarItem"

@@ -14,6 +14,10 @@ export const Footer = props => {
         <ul className="footerList">
           <li className="footerItem">
             <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "black"
+              }}
               className="link"
               to={
                 "/" +
@@ -28,17 +32,38 @@ export const Footer = props => {
             </NavLink>
           </li>
           <li className="footerItem">
-            <NavLink className="link" to="/faq">
+            <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "black"
+              }}
+              className="link"
+              to="/faq"
+            >
               FAQ
             </NavLink>
           </li>
           <li className="footerItem">
-            <NavLink className="link" to="/eula">
+            <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "black"
+              }}
+              className="link"
+              to="/eula"
+            >
               Regulamin
             </NavLink>
           </li>
           <li className="footerItem">
-            <NavLink className="link" to="/contact">
+            <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "black"
+              }}
+              className="link"
+              to="/contact"
+            >
               Kontakt
             </NavLink>
           </li>

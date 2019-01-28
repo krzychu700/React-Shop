@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/Products.css";
+import "./products.css";
 
 const Product = props => {
   return (
@@ -7,10 +7,13 @@ const Product = props => {
       <div className="productPictureArea">
         <img className="productPicture" src={props.picture} alt="1" />
       </div>
+      <div className="productTextArea">
+        <div className="productName">{props.name} </div>
 
-      <div>{`product name: ${props.name}`} </div>
-
-      <div>{`price: ${props.price} euro`}</div>
+        <div className="productPrice">{`$${parseFloat(props.price).toFixed(
+          2
+        )}`}</div>
+      </div>
     </div>
   );
 };

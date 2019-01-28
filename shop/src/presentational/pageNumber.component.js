@@ -22,10 +22,14 @@ const PageNumbers = props => (
         value={item + 1}
       >
         <li
-          className="pagesItem"
           value={item + 1}
           data-by={props.sortParams.by}
           data-order={props.sortParams.order}
+          className={
+            props.active === item + 1
+              ? "pagesItem pagesItem--active"
+              : "pagesItem"
+          }
         >
           {item < 9 ? `0${item + 1}` : item + 1}{" "}
         </li>
