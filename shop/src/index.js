@@ -30,7 +30,7 @@ render(
           <Route path={"/error"} render={() => <PageNotFound />} />
           <Redirect to={"/error"} />
         </Switch>
-        {/* <DevTols /> */}
+        <DevTols />
       </MainLayout>
     </BrowserRouter>
   </Provider>,

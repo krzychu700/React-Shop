@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import * as actions from "../actions/actions";
 import { bindActionCreators } from "redux";
+import Carousel from "../presentational/carousel.component";
 
 class SideBar extends Component {
   render() {
@@ -56,6 +57,15 @@ class SideBar extends Component {
             </li>
           </Link>
         </ul>
+        <div>
+          <h3> Ostatnie sztuki!:</h3>
+          <Carousel
+            autoPlay={true}
+            showArrows={true}
+            interval={3000}
+            lastItems={this.props.lastItems}
+          />
+        </div>
       </div>
     );
   }
@@ -65,7 +75,8 @@ let mapStateToProps = function(store) {
   return {
     itemList: store.shopReducer.itemList,
     active: store.shopReducer.active,
-    sortParams: store.shopReducer.sortParams
+    sortParams: store.shopReducer.sortParams,
+    lastItems: store.shopReducer.lastItems
   };
 };
 

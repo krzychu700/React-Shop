@@ -13,11 +13,14 @@ class ProductListContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.pagesNumbers();
+    this.props.actions.getData();
   }
 
   componentDidUpdate(prevProps) {
     // this.props.actions.activePage(this.props.match.params.id);
+    if (this.props.data !== prevProps.data) {
+      this.props.actions.pagesNumbers();
+    }
     if (this.props.match.params.id !== prevProps.active) {
       this.props.actions.activePage(this.props.match.params.id);
     }
@@ -28,6 +31,9 @@ class ProductListContainer extends Component {
       this.props.page !== prevProps.page
     ) {
       this.props.actions.getProductsOnPage();
+    }
+    if (this.props.data !== prevProps.data) {
+      this.props.actions.LastInStore();
     }
     // if (
     //   this.props.match.params.id !== this.props.active ||
@@ -92,7 +98,9 @@ let mapStateToProps = function(store) {
     itemList: store.shopReducer.itemList,
     page: store.shopReducer.page,
     active: store.shopReducer.active,
-    sortParams: store.shopReducer.sortParams
+    sortParams: store.shopReducer.sortParams,
+    data: store.shopReducer.data,
+    lastItems: store.shopReducer.lastItems
   };
 };
 

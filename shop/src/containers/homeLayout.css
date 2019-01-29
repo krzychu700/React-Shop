@@ -12,8 +12,21 @@
 .pageContainer {
   display: flex;
   width: 100%;
+  min-height: 850px;
+  display: flex;
+  justify-content: center;
 }
 
 .link {
   text-decoration: none;
+}
+
+.subpageArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.subpageTitle {
+  margin-bottom: 20px;
 }

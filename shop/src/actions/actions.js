@@ -1,3 +1,4 @@
+export const GET_DATA = "GET_DATA";
 export const SORT = "SORT";
 export const GET_PAGES_NUMBERS = "GET_PAGES_NUMBERS";
 export const GET_PRODUCTS_ON_PAGE = "GET_PRODUCTS_ON_PAGE";
@@ -7,7 +8,14 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const DEL_FROM_CART = "DEL_FROM_CART";
 export const UPDATE_CART = "UPDATE_CART";
 export const PRODUCT_IN_CART_COUNTER = "PRODUCT_IN_CART_COUNTER";
+export const LAST_IN_STORE = "LAST_IN_STORE";
 export const AA = "AA";
+
+export function getData() {
+  return {
+    type: GET_DATA
+  };
+}
 
 export function sort(sortParams) {
   return {
@@ -67,6 +75,12 @@ export function productInCartCount(id, value) {
     type: PRODUCT_IN_CART_COUNTER,
     id,
     value
+  };
+}
+
+export function LastInStore() {
+  return {
+    type: LAST_IN_STORE
   };
 }
 

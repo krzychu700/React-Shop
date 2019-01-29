@@ -1,5 +1,6 @@
 /* eslint-disable default-case */
 import {
+  GET_DATA,
   SORT,
   GET_PAGES_NUMBERS,
   GET_PRODUCTS_ON_PAGE,
@@ -7,15 +8,15 @@ import {
   GET_PRODUCT,
   ADD_TO_CART,
   DEL_FROM_CART,
-  UPDATE_CART,
   PRODUCT_IN_CART_COUNTER,
-  AA,
-  aa
+  LAST_IN_STORE,
+  AA
 } from "../actions/actions";
-import data from "../data.json";
+import dataJson from "../data.json";
+import uuid from "uuid";
 
 const initialState = {
-  data: data,
+  data: [],
   itemList: [],
   page: 0,
   active: 1,
@@ -24,7 +25,8 @@ const initialState = {
     order: "desc"
   },
   selectedProduct: {},
-  cart: []
+  cart: [],
+  lastItems: []
 };
 
 const shopReducer = function(state = initialState, action) {
@@ -118,6 +120,19 @@ const shopReducer = function(state = initialState, action) {
   //   });
   // }
   switch (action.type) {
+    case GET_DATA: {
+      const data = dataJson.map(product => {
+        return (product.id = uuid()), product;
+      });
+      const lastItems = dataJson.filter(product => {
+        return product.inMagazine <= 3;
+      });
+      return Object.assign({}, state, {
+        data: data,
+        lastItems
+      });
+    }
+
     case GET_PAGES_NUMBERS: {
       return initial(state);
     }
@@ -188,6 +203,15 @@ const shopReducer = function(state = initialState, action) {
       );
       return Object.assign({}, state, {
         cart: [...selectedProductToRemove]
+      });
+
+    case LAST_IN_STORE:
+      const lastItems = state.data.filter(product => {
+        return product.inMagazine <= 3;
+      });
+
+      return Object.assign({}, state, {
+        lastItems: [...lastItems]
       });
 
     case PRODUCT_IN_CART_COUNTER:
