@@ -17,12 +17,12 @@ class ProductListContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // this.props.actions.activePage(this.props.match.params.id);
+    const liczba = parseInt(this.props.match.params.id, 10);
     if (this.props.data !== prevProps.data) {
       this.props.actions.pagesNumbers();
     }
-    if (this.props.match.params.id !== prevProps.active) {
-      this.props.actions.activePage(this.props.match.params.id);
+    if (!isNaN(liczba) && liczba !== this.props.active) {
+      this.props.actions.activePage(liczba);
     }
     if (
       this.props.active !== prevProps.active ||
@@ -36,13 +36,13 @@ class ProductListContainer extends Component {
       this.props.actions.LastInStore();
     }
     // if (
-    //   this.props.match.params.id !== this.props.active ||
+    //   liczba !== this.props.active ||
     //   this.props.match.params.by !== this.props.sortParams.by ||
     //   this.props.match.params.order !== this.props.sortParams.order
     // ) {
     //   console.log("działa");
     //   this.props.actions.aa(
-    //     this.props.match.params.id,
+    //     liczba,
     //     this.props.match.params.by,
     //     this.props.match.params.order
     //   );

@@ -58,7 +58,7 @@ class SideBar extends Component {
           </Link>
         </ul>
         <div>
-          <h3> Ostatnie sztuki!:</h3>
+          <h3 className="sliderTitle"> Ostatnie sztuki!:</h3>
           <Carousel
             autoPlay={true}
             showArrows={true}

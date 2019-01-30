@@ -103,22 +103,22 @@ const shopReducer = function(state = initialState, action) {
     });
   }
 
-  // function aa(action) {
-  //   const ddd = action.active;
-  //   const bbb = action.by;
-  //   const ccc = action.order;
+  function aa(action) {
+    const ddd = action.active;
+    const bbb = action.by;
+    const ccc = action.order;
 
-  //   console.log(bbb);
-  //   console.log(ccc);
-  //   console.log(ddd);
-  //   return Object.assign({}, state, {
-  //     active: ddd,
-  //     sortParams: {
-  //       by: bbb,
-  //       order: ccc
-  //     }
-  //   });
-  // }
+    console.log(bbb);
+    console.log(ccc);
+    console.log(ddd);
+    return Object.assign({}, state, {
+      active: ddd,
+      sortParams: {
+        by: bbb,
+        order: ccc
+      }
+    });
+  }
   switch (action.type) {
     case GET_DATA: {
       const data = dataJson.map(product => {
@@ -223,22 +223,22 @@ const shopReducer = function(state = initialState, action) {
     //     cart: state.cart
     //   });
 
-    // case AA:
-    //   return aa(action);
-    // const ddd = action.active;
-    // const bbb = action.by;
-    // const ccc = action.order;
+    case AA:
+      return aa(action);
+      const ddd = action.active;
+      const bbb = action.by;
+      const ccc = action.order;
 
-    // console.log(bbb);
-    // console.log(ccc);
-    // console.log(ddd);
-    // return Object.assign({}, state, {
-    //   active: ddd,
-    //   sortParams: {
-    //     by: bbb,
-    //     order: ccc
-    //   }
-    // });
+      console.log(bbb);
+      console.log(ccc);
+      console.log(ddd);
+      return Object.assign({}, state, {
+        active: ddd,
+        sortParams: {
+          by: bbb,
+          order: ccc
+        }
+      });
   }
 
   return state;
