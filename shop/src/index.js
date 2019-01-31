@@ -6,7 +6,7 @@ import { FAQ } from "./presentational/FAQ.component";
 import { Eula } from "./presentational/eula.component";
 import { Contact } from "./presentational/contact.component";
 import store from "../src/store/index";
-import { getProductsOnPage } from "../src/actions/actions";
+import { getData } from "../src/actions/actions";
 import { Provider } from "react-redux";
 import MainLayout from "./containers/mainLayout-container.component";
 import DevTols from "./DevTools";
@@ -37,4 +37,4 @@ render(
   document.getElementById("root")
 );
 
-store.dispatch(getProductsOnPage());
+store.dispatch(getData());

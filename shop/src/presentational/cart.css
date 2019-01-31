@@ -76,6 +76,11 @@
   position: relative;
 }
 
+.cartProductBuyingContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .buttonBuy {
   margin-top: 30px;
   width: 258px;

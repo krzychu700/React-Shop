@@ -1,35 +1,42 @@
 [{
+    "id": "5c96021b-808f-4e16-be83-828348eaed2a",
     "name": "xbuty1",
-    "price": 10,
+    "price": 10.99,
     "picture": "/img/1.jpg",
-    "inMagazine": 5
+    "inMagazine": 3
   },
   {
+    "id": "55429201-c0e6-4914-91cd-41aeb5384ff3",
     "name": "buty2",
     "price": 20,
     "picture": "/img/2.jpg",
-    "inMagazine": 3
+    "inMagazine": 2
   }, {
+    "id": "8aa6be1e-8acc-4a78-8961-82d0d40e1437",
     "name": "asbuty2",
     "price": 110,
     "picture": "/img/2.jpg",
     "inMagazine": 2
   }, {
+    "id": "9fae3bf2-e265-4593-b356-c1a3f9af2196",
     "name": "asdrbuty2",
     "price": 20,
     "picture": "/img/2.jpg",
-    "inMagazine": 6
+    "inMagazine": 2
   }, {
+    "id": "aee954f0-1f88-4093-8dbb-8b2b5e6a7b35",
     "name": "ujgfbuty2",
     "price": 78,
     "picture": "/img/2.jpg",
-    "inMagazine": 11
+    "inMagazine": 2
   }, {
+    "id": "c7008d0a-0ff9-4622-99bf-a3a6d8851848",
     "name": "njhgbuty2",
     "price": 221,
     "picture": "/img/2.jpg",
-    "inMagazine": 15
+    "inMagazine": 2
   }, {
+    "id": "0e8dfd67-65f0-4d6f-b626-1f89bd49b853",
     "name": "sdabuty2",
     "price": 1,
     "picture": "/img/2.jpg",

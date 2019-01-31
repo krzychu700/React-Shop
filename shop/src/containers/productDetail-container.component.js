@@ -15,12 +15,16 @@ class ProductDetailContainer extends Component {
     this.props.actions.getProduct(this.props.match.params.id);
   }
 
-  getAA = id => {
+  handleClickAddToCart = id => {
     this.props.actions.addToCart(id);
   };
   render() {
     return (
-      <ProductDetail product={this.props.selectedProduct} getAA={this.getAA} />
+      <ProductDetail
+        product={this.props.selectedProduct}
+        handleClickAddToCart={this.handleClickAddToCart}
+        cart={this.props.cart}
+      />
     );
   }
 }

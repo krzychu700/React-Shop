@@ -25,7 +25,7 @@ const ProductDetail = props => (
         </p>
         <button
           className="buttonCart"
-          onClick={() => props.getAA(props.product.id)}
+          onClick={() => props.handleClickAddToCart(props.product.id)}
         >
           Dodaj do koszyka
         </button>

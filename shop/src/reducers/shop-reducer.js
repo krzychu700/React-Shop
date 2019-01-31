@@ -13,10 +13,9 @@ import {
   AA
 } from "../actions/actions";
 import dataJson from "../data.json";
-import uuid from "uuid";
 
 const initialState = {
-  data: [],
+  data: dataJson,
   itemList: [],
   page: 0,
   active: 1,
@@ -76,8 +75,8 @@ const shopReducer = function(state = initialState, action) {
   }
 
   //function responsible for slicing data to show proper number
-  function getProductsOnPagea(state) {
-    const productsOnActivePage = state.itemList.slice(
+  function getProductsOnPage(state) {
+    const productsOnActivePage = state.data.slice(
       (state.active - 1) * 7,
       state.active * 7 - 1
     );
@@ -121,14 +120,10 @@ const shopReducer = function(state = initialState, action) {
   }
   switch (action.type) {
     case GET_DATA: {
-      const data = dataJson.map(product => {
-        return (product.id = uuid()), product;
-      });
       const lastItems = dataJson.filter(product => {
         return product.inMagazine <= 3;
       });
       return Object.assign({}, state, {
-        data: data,
         lastItems
       });
     }
@@ -142,13 +137,7 @@ const shopReducer = function(state = initialState, action) {
     }
 
     case GET_PRODUCTS_ON_PAGE: {
-      const activePage = state.data.slice(
-        (state.active - 1) * 6,
-        state.active * 6
-      );
-      return Object.assign({}, state, {
-        itemList: [...activePage]
-      });
+      return getProductsOnPage(state);
     }
 
     case ACTIVE_PAGE:
@@ -163,21 +152,21 @@ const shopReducer = function(state = initialState, action) {
 
     case GET_PRODUCT:
       const selectedProduct = state.data.find(
-        product => product.id == action.id
+        product => product.id === action.id
       );
       return Object.assign({}, state, { selectedProduct });
 
     case ADD_TO_CART:
       let count = 1;
       const choosenProduct = state.data.find(
-        product => product.id == action.id
+        product => product.id === action.id
       );
       const productInCart = state.cart.find(
-        product => product.id == choosenProduct.id
+        product => product.id === choosenProduct.id
       );
       if (productInCart) {
         const objIndex = state.cart.findIndex(
-          product => product.id == action.id
+          product => product.id === action.id
         );
         const updatedObj = {
           ...state.cart[objIndex],
@@ -217,28 +206,8 @@ const shopReducer = function(state = initialState, action) {
     case PRODUCT_IN_CART_COUNTER:
       return productInCartCounter(state, action);
 
-    // case UPDATE_CART:
-    //   console.log("done");
-    //   return Object.assign({}, state, {
-    //     cart: state.cart
-    //   });
-
     case AA:
       return aa(action);
-      const ddd = action.active;
-      const bbb = action.by;
-      const ccc = action.order;
-
-      console.log(bbb);
-      console.log(ccc);
-      console.log(ddd);
-      return Object.assign({}, state, {
-        active: ddd,
-        sortParams: {
-          by: bbb,
-          order: ccc
-        }
-      });
   }
 
   return state;

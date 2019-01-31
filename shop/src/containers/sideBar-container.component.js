@@ -7,6 +7,11 @@ import { bindActionCreators } from "redux";
 import Carousel from "../presentational/carousel.component";
 
 class SideBar extends Component {
+  click(e) {
+    console.log(e.target.id);
+    this.props.actions.getProduct(e.target.id);
+  }
+
   render() {
     return (
       <div className="sideBar">
@@ -59,12 +64,7 @@ class SideBar extends Component {
         </ul>
         <div>
           <h3 className="sliderTitle"> Ostatnie sztuki!:</h3>
-          <Carousel
-            autoPlay={true}
-            showArrows={true}
-            interval={3000}
-            lastItems={this.props.lastItems}
-          />
+          <Carousel click={this.click} lastItems={this.props.lastItems} />
         </div>
       </div>
     );

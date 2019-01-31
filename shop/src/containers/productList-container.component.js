@@ -13,7 +13,7 @@ class ProductListContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.getData();
+    this.props.actions.getProductsOnPage();
   }
 
   componentDidUpdate(prevProps) {

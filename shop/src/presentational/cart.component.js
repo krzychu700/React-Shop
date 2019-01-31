@@ -25,37 +25,39 @@ const Cart = props => (
                   </p>
                 </div>
                 <div className="cartProductBuyingArea">
-                  <p className="cartProduct cartProduct--grey">{`$${parseFloat(
-                    product.price
-                  ).toFixed(2)}`}</p>
-                  <span
-                    className={
-                      product.count > 1
-                        ? "cartProduct cartProductClick"
-                        : "cartProduct cartProductDisabled"
-                    }
-                    onClick={() =>
-                      product.count === 1
-                        ? null
-                        : props.clickCartCounter(product.id, -1)
-                    }
-                  >
-                    -
-                  </span>
-                  <p className="cartProduct">{product.count}</p>
-                  <span
-                    className="cartProduct cartProductClick"
-                    onClick={() => props.clickCartCounter(product.id, 1)}
-                  >
-                    +
-                  </span>
-                  <p className="cartProduct">szt</p>
-                  <span
-                    className="cartDelProductButton"
-                    onClick={() => props.clickDelProduct(product.id)}
-                  >
-                    usuń produkt
-                  </span>
+                  <div className="cartProductBuyingContainer">
+                    <p className="cartProduct cartProduct--grey">{`$${parseFloat(
+                      product.price
+                    ).toFixed(2)}`}</p>
+                    <span
+                      className={
+                        product.count > 1
+                          ? "cartProduct cartProductClick"
+                          : "cartProduct cartProductDisabled"
+                      }
+                      onClick={() =>
+                        product.count === 1
+                          ? null
+                          : props.clickCartCounter(product.id, -1)
+                      }
+                    >
+                      -
+                    </span>
+                    <p className="cartProduct">{product.count}</p>
+                    <span
+                      className="cartProduct cartProductClick"
+                      onClick={() => props.clickCartCounter(product.id, 1)}
+                    >
+                      +
+                    </span>
+                    <p className="cartProduct">szt</p>
+                    <span
+                      className="cartDelProductButton"
+                      onClick={() => props.clickDelProduct(product.id)}
+                    >
+                      usuń produkt
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
