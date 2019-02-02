@@ -75,3 +75,10 @@
   color: white;
   cursor: pointer;
 }
+
+.buttonCart--empty {
+  width: 400px;
+  background-color: rgb(105, 107, 103);
+  color: black;
+  cursor: none;
+}

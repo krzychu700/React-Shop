@@ -18,12 +18,6 @@ class ProductListContainer extends Component {
 
   componentDidUpdate(prevProps) {
     const liczba = parseInt(this.props.match.params.id, 10);
-    if (this.props.data !== prevProps.data) {
-      this.props.actions.pagesNumbers();
-    }
-    if (!isNaN(liczba) && liczba !== this.props.active) {
-      this.props.actions.activePage(liczba);
-    }
     if (
       this.props.active !== prevProps.active ||
       this.props.sortParams.by !== prevProps.sortParams.by ||
@@ -32,6 +26,10 @@ class ProductListContainer extends Component {
     ) {
       this.props.actions.getProductsOnPage();
     }
+    if (!isNaN(liczba) && liczba !== this.props.active) {
+      this.props.actions.activePage(liczba);
+    }
+
     if (this.props.data !== prevProps.data) {
       this.props.actions.LastInStore();
     }

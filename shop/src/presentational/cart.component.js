@@ -45,8 +45,16 @@ const Cart = props => (
                     </span>
                     <p className="cartProduct">{product.count}</p>
                     <span
-                      className="cartProduct cartProductClick"
-                      onClick={() => props.clickCartCounter(product.id, 1)}
+                      className={
+                        product.count === product.inMagazine
+                          ? "cartProduct cartProductDisabled"
+                          : "cartProduct cartProductClick"
+                      }
+                      onClick={() =>
+                        product.count === product.inMagazine
+                          ? null
+                          : props.clickCartCounter(product.id, 1)
+                      }
                     >
                       +
                     </span>
@@ -64,7 +72,7 @@ const Cart = props => (
           </div>
         );
       })}
-      <div className={props.cart.length != 0 ? "hide" : "emptyCart"}>
+      <div className={props.cart.length !== 0 ? "hide" : "emptyCart"}>
         <h3> Twój koszyk jest pusty :(</h3>
       </div>
       <div className={props.cart.length === 0 ? "hide" : "cartFinishArea"}>

@@ -2,7 +2,6 @@
 import {
   GET_DATA,
   SORT,
-  GET_PAGES_NUMBERS,
   GET_PRODUCTS_ON_PAGE,
   ACTIVE_PAGE,
   GET_PRODUCT,
@@ -12,7 +11,7 @@ import {
   LAST_IN_STORE,
   AA
 } from "../actions/actions";
-import dataJson from "../data.json";
+import dataJson from "../Data.json";
 
 const initialState = {
   data: dataJson,
@@ -29,21 +28,6 @@ const initialState = {
 };
 
 const shopReducer = function(state = initialState, action) {
-  //first init of project, calucation, how many pages we need
-  function initial(state) {
-    const productListLength = state.data.length;
-    let page = state.page;
-    if (productListLength > 6 && page <= productListLength / 6) {
-      let i = 0;
-      for (i = 0; i < productListLength; i = i + 6) {
-        page++;
-      }
-    }
-    return Object.assign({}, state, {
-      page: page
-    });
-  }
-
   //sort function
   function sortProduct(state, action) {
     const sortBy = action.sortParams.by;
@@ -77,8 +61,8 @@ const shopReducer = function(state = initialState, action) {
   //function responsible for slicing data to show proper number
   function getProductsOnPage(state) {
     const productsOnActivePage = state.data.slice(
-      (state.active - 1) * 7,
-      state.active * 7 - 1
+      (state.active - 1) * 6,
+      state.active * 6
     );
     return Object.assign({}, state, {
       itemList: [...productsOnActivePage]
@@ -123,13 +107,18 @@ const shopReducer = function(state = initialState, action) {
       const lastItems = dataJson.filter(product => {
         return product.inMagazine <= 3;
       });
+      const productListLength = state.data.length;
+      let page = state.page;
+      if (productListLength > 6 && page <= productListLength / 6) {
+        let i = 0;
+        for (i = 0; i < productListLength; i = i + 6) {
+          page++;
+        }
+      }
       return Object.assign({}, state, {
-        lastItems
+        lastItems,
+        page
       });
-    }
-
-    case GET_PAGES_NUMBERS: {
-      return initial(state);
     }
 
     case SORT: {
@@ -157,7 +146,7 @@ const shopReducer = function(state = initialState, action) {
       return Object.assign({}, state, { selectedProduct });
 
     case ADD_TO_CART:
-      let count = 1;
+      let count = 0;
       const choosenProduct = state.data.find(
         product => product.id === action.id
       );
@@ -165,22 +154,35 @@ const shopReducer = function(state = initialState, action) {
         product => product.id === choosenProduct.id
       );
       if (productInCart) {
-        const objIndex = state.cart.findIndex(
-          product => product.id === action.id
-        );
-        const updatedObj = {
-          ...state.cart[objIndex],
-          count: (state.cart[objIndex].count += 1)
-        };
-        return Object.assign({}, state, {
-          cart: [
-            ...state.cart.slice(0, objIndex),
-            updatedObj,
-            ...state.cart.slice(objIndex + 1)
-          ]
-        });
+        if (productInCart.count < productInCart.inMagazine) {
+          const objIndex = state.cart.findIndex(
+            product => product.id === action.id
+          );
+          const updatedObj = {
+            ...state.cart[objIndex],
+            count: state.cart[objIndex].count + 1
+          };
+          return Object.assign({}, state, {
+            cart: [
+              ...state.cart.slice(0, objIndex),
+              updatedObj,
+              ...state.cart.slice(objIndex + 1)
+            ],
+            selectedProduct: {
+              ...state.selectedProduct,
+              count: state.selectedProduct.count + 1
+            }
+          });
+        } else {
+          return Object.assign({}, state, {
+            selectedProduct: {
+              ...state.selectedProduct,
+              count: productInCart.inMagazine
+            }
+          });
+        }
       } else {
-        choosenProduct.count = count;
+        choosenProduct.count = count + 1;
         return Object.assign({}, state, {
           cart: [...state.cart, choosenProduct]
         });

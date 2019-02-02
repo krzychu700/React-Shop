@@ -10,19 +10,19 @@
     "name": "buty2",
     "price": 20,
     "picture": "/img/2.jpg",
-    "inMagazine": 2
+    "inMagazine": 4
   }, {
     "id": "8aa6be1e-8acc-4a78-8961-82d0d40e1437",
     "name": "asbuty2",
     "price": 110,
     "picture": "/img/2.jpg",
-    "inMagazine": 2
+    "inMagazine": 5
   }, {
     "id": "9fae3bf2-e265-4593-b356-c1a3f9af2196",
     "name": "asdrbuty2",
     "price": 20,
     "picture": "/img/2.jpg",
-    "inMagazine": 2
+    "inMagazine": 6
   }, {
     "id": "aee954f0-1f88-4093-8dbb-8b2b5e6a7b35",
     "name": "ujgfbuty2",
