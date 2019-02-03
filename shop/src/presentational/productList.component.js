@@ -12,7 +12,7 @@ const ProductList = props => (
             name={item.name}
             price={item.price}
             picture={item.picture}
-            count={item.count}
+            sold={item.sold}
             inMagazine={item.inMagazine}
           />
         </Link>

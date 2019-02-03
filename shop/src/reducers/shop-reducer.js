@@ -8,9 +8,7 @@ import {
   ADD_TO_CART,
   DEL_FROM_CART,
   PRODUCT_IN_CART_COUNTER,
-  LAST_IN_STORE,
-  UPDATE_PRODUCTS_IN_MAGAZINE,
-  AA
+  UPDATE_PRODUCTS_IN_MAGAZINE
 } from "../actions/actions";
 import dataJson from "../Data.json";
 
@@ -33,12 +31,12 @@ const shopReducer = function(state = initialState, action) {
   function sortProduct(state, action) {
     const sortBy = action.sortParams.by;
     const sortOrder = action.sortParams.order;
-    if (
-      sortBy === state.sortParams.by &&
-      sortOrder === state.sortParams.order
-    ) {
-      return state;
-    }
+    // if (
+    //   sortBy === state.sortParams.by &&
+    //   sortOrder === state.sortParams.order
+    // ) {
+    //   return state;
+    // }
     const sortedItem = state.data.sort((a, b) => {
       if (sortBy === "price" && sortOrder === "desc") {
         return b.price - a.price;
@@ -59,14 +57,19 @@ const shopReducer = function(state = initialState, action) {
     });
   }
 
-  //function responsible for slicing data to show proper number
+  //function responsible for slicing data to show proper number of products on page and in slider
   function getProductsOnPage(state) {
     const productsOnActivePage = state.data.slice(
       (state.active - 1) * 6,
       state.active * 6
     );
+    const lastItems = state.data.filter(
+      product => product.inMagazine <= 3 && product.inMagazine > 0
+    );
+
     return Object.assign({}, state, {
-      itemList: [...productsOnActivePage]
+      itemList: [...productsOnActivePage],
+      lastItems: lastItems
     });
   }
 
@@ -88,42 +91,28 @@ const shopReducer = function(state = initialState, action) {
   }
 
   function updateMagazine(state) {
-    // Object.keys(obj).forEach(function(key) {
-    //   if ("object" === typeof obj[key] && !Array.isArray(obj[key])) {
-    //     updateMagazine(targetObject[key], obj[key]);
-    //   } else if ("string" === typeof obj[key] || "number" === typeof obj[key]) {
-    //     targetObject[key] = obj[key];
-    //   }
-    // });
-    let newState = state.data.map(item =>
-      Object.assign({}, state.data, state.cart)
-    );
-
-    // state.data[0].count = state.cart[0].count;
+    for (var i in state.data) {
+      if (state.data.hasOwnProperty(i)) {
+        for (var j in state.cart) {
+          if (state.cart.hasOwnProperty(j)) {
+            if (state.data[i].id === state.cart[j].id) {
+              state.data[i].sold = state.cart[j].count;
+              state.data[i].inMagazine =
+                state.data[i].inMagazine - state.cart[j].count;
+            }
+          }
+        }
+      }
+    }
     return Object.assign({}, state, {
-      data: { ...newState },
+      ...state,
       cart: []
     });
   }
 
-  function aa(action) {
-    const ddd = action.active;
-    const bbb = action.by;
-    const ccc = action.order;
-
-    console.log(bbb);
-    console.log(ccc);
-    console.log(ddd);
-    return Object.assign({}, state, {
-      active: ddd,
-      sortParams: {
-        by: bbb,
-        order: ccc
-      }
-    });
-  }
   switch (action.type) {
     case GET_DATA: {
+      console.log("1");
       const lastItems = dataJson.filter(product => {
         return product.inMagazine <= 3;
       });
@@ -134,6 +123,8 @@ const shopReducer = function(state = initialState, action) {
         for (i = 0; i < productListLength; i = i + 6) {
           page++;
         }
+      } else {
+        page = 3;
       }
       return Object.assign({}, state, {
         lastItems,
@@ -146,6 +137,7 @@ const shopReducer = function(state = initialState, action) {
     }
 
     case GET_PRODUCTS_ON_PAGE: {
+      console.log("2");
       return getProductsOnPage(state);
     }
 
@@ -163,47 +155,57 @@ const shopReducer = function(state = initialState, action) {
       const selectedProduct = state.data.find(
         product => product.id === action.id
       );
+      selectedProduct.count = 0;
       return Object.assign({}, state, { selectedProduct });
 
     case ADD_TO_CART:
+      let count = 0;
+
       const choosenProduct = state.data.find(
         product => product.id === action.id
       );
       const productInCart = state.cart.find(
         product => product.id === choosenProduct.id
       );
-      if (productInCart) {
-        if (productInCart.count < productInCart.inMagazine) {
-          const objIndex = state.cart.findIndex(
-            product => product.id === action.id
-          );
-          const updatedObj = {
-            ...state.cart[objIndex],
-            count: state.cart[objIndex].count + 1
-          };
-          return Object.assign({}, state, {
-            cart: [
-              ...state.cart.slice(0, objIndex),
-              updatedObj,
-              ...state.cart.slice(objIndex + 1)
-            ],
-            selectedProduct: {
-              ...state.selectedProduct,
-              count: state.selectedProduct.count + 1
-            }
-          });
+      if (choosenProduct.inMagazine !== 0) {
+        if (productInCart) {
+          if (productInCart.count < productInCart.inMagazine) {
+            const objIndex = state.cart.findIndex(
+              product => product.id === action.id
+            );
+            const updatedObj = {
+              ...state.cart[objIndex],
+              count: state.cart[objIndex].count + 1
+            };
+            return Object.assign({}, state, {
+              cart: [
+                ...state.cart.slice(0, objIndex),
+                updatedObj,
+                ...state.cart.slice(objIndex + 1)
+              ],
+              selectedProduct: {
+                ...state.selectedProduct,
+                count: state.selectedProduct.count + 1
+              }
+            });
+          } else {
+            return Object.assign({}, state, {
+              selectedProduct: {
+                ...state.selectedProduct,
+                count: productInCart.inMagazine
+              }
+            });
+          }
         } else {
+          state.selectedProduct.count = count + 1;
           return Object.assign({}, state, {
-            selectedProduct: {
-              ...state.selectedProduct,
-              count: productInCart.inMagazine
-            }
+            cart: [...state.cart, choosenProduct],
+            ...selectedProduct
           });
         }
       } else {
-        choosenProduct.count = choosenProduct.count + 1;
         return Object.assign({}, state, {
-          cart: [...state.cart, choosenProduct]
+          ...state
         });
       }
 
@@ -215,23 +217,11 @@ const shopReducer = function(state = initialState, action) {
         cart: [...selectedProductToRemove]
       });
 
-    case LAST_IN_STORE:
-      const lastItems = state.data.filter(product => {
-        return product.inMagazine <= 3;
-      });
-
-      return Object.assign({}, state, {
-        lastItems: [...lastItems]
-      });
-
     case PRODUCT_IN_CART_COUNTER:
       return productInCartCounter(state, action);
 
     case UPDATE_PRODUCTS_IN_MAGAZINE:
       return updateMagazine(state);
-
-    case AA:
-      return aa(action);
   }
 
   return state;

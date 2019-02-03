@@ -12,6 +12,26 @@ export const Menu = props => {
 
       <div className="menuArea">
         <ul className="menuList">
+          <li className={"menuItem cartIconArea"}>
+            <NavLink
+              activeStyle={{
+                color: "black"
+              }}
+              className="link"
+              to="/cart"
+            >
+              <i className="fas fa-shopping-bag cartIcon" />
+              <div
+                className={props.cart.length > 0 ? "productsInCart" : "hide"}
+              >
+                {parseFloat(
+                  props.cart.reduce(function(previousValue, currentValue) {
+                    return previousValue + currentValue.count;
+                  }, 0)
+                )}
+              </div>
+            </NavLink>
+          </li>
           <li className={"menuItem"}>
             <NavLink
               activeStyle={{
@@ -65,26 +85,6 @@ export const Menu = props => {
               to="/contact"
             >
               Kontakt
-            </NavLink>
-          </li>
-          <li className={"menuItem cartIconArea"}>
-            <NavLink
-              activeStyle={{
-                color: "black"
-              }}
-              className="link"
-              to="/cart"
-            >
-              <i className="fas fa-shopping-bag cartIcon" />
-              <div
-                className={props.cart.length > 0 ? "productsInCart" : "hide"}
-              >
-                {parseFloat(
-                  props.cart.reduce(function(previousValue, currentValue) {
-                    return previousValue + currentValue.count;
-                  }, 0)
-                )}
-              </div>
             </NavLink>
           </li>
         </ul>

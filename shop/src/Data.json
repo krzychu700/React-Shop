@@ -4,6 +4,7 @@
     "price": 10.99,
     "picture": "/img/1.jpg",
     "inMagazine": 3,
+    "sold": 0,
     "count": 0
   },
   {
@@ -12,6 +13,7 @@
     "price": 20,
     "picture": "/img/2.jpg",
     "inMagazine": 4,
+    "sold": 0,
     "count": 0
   }
 ]

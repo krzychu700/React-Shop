@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 import * as actions from "../actions/actions";
 import ProductList from "../presentational/productList.component";
 import { bindActionCreators } from "redux";
@@ -17,7 +17,7 @@ class ProductListContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const liczba = parseInt(this.props.match.params.id, 10);
+    let liczba = parseInt(this.props.match.params.id, 10);
     if (
       this.props.active !== prevProps.active ||
       this.props.sortParams.by !== prevProps.sortParams.by ||
@@ -29,32 +29,43 @@ class ProductListContainer extends Component {
     if (!isNaN(liczba) && liczba !== this.props.active) {
       this.props.actions.activePage(liczba);
     }
-
-    if (this.props.data !== prevProps.data) {
-      this.props.actions.LastInStore();
+    if (
+      liczba !== this.props.active ||
+      this.props.match.params.by !== this.props.sortParams.by ||
+      this.props.match.params.order !== this.props.sortParams.order
+    ) {
+      this.props.actions.sort({
+        by: this.props.match.params.by,
+        order: this.props.match.params.order
+      });
     }
     // if (
-    //   liczba !== this.props.active ||
-    //   this.props.match.params.by !== this.props.sortParams.by ||
-    //   this.props.match.params.order !== this.props.sortParams.order
+    //   parseInt(this.props.match.params.id, 10) > 3 ||
+    //   this.props.match.params.by !== "name" ||
+    //   this.props.match.params.by !== "price" ||
+    //   this.props.match.params.order !== "asc" ||
+    //   this.props.match.params.order !== "desc"
     // ) {
-    //   console.log("działa");
-    //   this.props.actions.aa(
-    //     liczba,
-    //     this.props.match.params.by,
-    //     this.props.match.params.order
-    //   );
+    //   console.log("sdadsfas");
+    //   return <Redirect to="/error" />;
     // }
-    //sprawdzac matche w jednym ifie, w drugim propsy
   }
 
   click(e) {
     this.props.actions.getProduct(e.target.id);
   }
 
+  renderRedirect = () => {
+    if (parseInt(this.props.match.params.id, 10) > this.props.page) {
+      console.log(this.props.page);
+      return <Redirect to="/error" />;
+    }
+  };
+
   render() {
     return (
       <div className="productListArea">
+        {this.renderRedirect()}
         <ProductList
           item={this.props.itemList}
           click={this.click}

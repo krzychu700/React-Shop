@@ -25,14 +25,15 @@ const ProductDetail = props => (
         </p>
         <button
           className={
-            props.product.count === props.product.inMagazine
+            props.product.inMagazine - props.product.count === 0 ||
+            props.product.inMagazine === 0
               ? "buttonCart buttonCart--empty"
-              : "buttonCart"
+              : "buttonCart "
           }
           onClick={() => props.handleClickAddToCart(props.product.id)}
         >
-          {" "}
-          {props.product.count === props.product.inMagazine
+          {props.product.inMagazine - props.product.count === 0 ||
+          props.product.inMagazine === 0
             ? "Wybacz, brak więcej produktów w magazynie"
             : "Dodaj do koszyka"}
         </button>

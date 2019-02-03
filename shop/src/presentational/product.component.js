@@ -15,9 +15,7 @@ const Product = props => {
         )}`}</div>
         <div
           className={
-            props.count === props.inMagazine
-              ? "soldArea "
-              : "soldArea soldArea--hidden"
+            props.inMagazine === 0 ? "soldArea " : "soldArea soldArea--hidden"
           }
         >
           <p className="sold">Wyprzedane</p>
