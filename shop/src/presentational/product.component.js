@@ -13,6 +13,15 @@ const Product = props => {
         <div className="productPrice">{`$${parseFloat(props.price).toFixed(
           2
         )}`}</div>
+        <div
+          className={
+            props.count === props.inMagazine
+              ? "soldArea "
+              : "soldArea soldArea--hidden"
+          }
+        >
+          <p className="sold">Wyprzedane</p>
+        </div>
       </div>
     </div>
   );

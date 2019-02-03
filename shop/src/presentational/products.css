@@ -8,6 +8,11 @@
   align-items: center;
   margin: 10px;
   position: relative;
+  transition: transform 1s ease-in-out;
+}
+
+.product:hover {
+  transform: scale(1.1);
 }
 
 .productPictureArea {
@@ -48,4 +53,20 @@
   font-weight: 400;
   line-height: 27px;
   letter-spacing: 0.9px;
+}
+
+.soldArea {
+  position: absolute;
+  top: -200px;
+  left: -15px;
+}
+
+.soldArea--hidden {
+  display: none;
+}
+
+.sold {
+  transform: rotate(-45deg);
+  font-size: 55px;
+  color: black;
 }

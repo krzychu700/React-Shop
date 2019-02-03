@@ -55,7 +55,11 @@ class ProductListContainer extends Component {
   render() {
     return (
       <div className="productListArea">
-        <ProductList item={this.props.itemList} click={this.click} />
+        <ProductList
+          item={this.props.itemList}
+          click={this.click}
+          data={this.props.data}
+        />
         <div className="pages">
           <ul className="pagesList">
             <PageNumbers

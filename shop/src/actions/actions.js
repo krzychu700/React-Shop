@@ -7,6 +7,7 @@ export const GET_PRODUCT = "GET_PRODUCT";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DEL_FROM_CART = "DEL_FROM_CART";
 export const UPDATE_CART = "UPDATE_CART";
+export const UPDATE_PRODUCTS_IN_MAGAZINE = "UPDATE_PRODUCTS_IN_MAGAZINE";
 export const PRODUCT_IN_CART_COUNTER = "PRODUCT_IN_CART_COUNTER";
 export const LAST_IN_STORE = "LAST_IN_STORE";
 export const AA = "AA";
@@ -81,6 +82,12 @@ export function productInCartCount(id, value) {
 export function LastInStore() {
   return {
     type: LAST_IN_STORE
+  };
+}
+
+export function updateProductsInMagazine() {
+  return {
+    type: UPDATE_PRODUCTS_IN_MAGAZINE
   };
 }
 

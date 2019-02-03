@@ -9,6 +9,7 @@ import {
   DEL_FROM_CART,
   PRODUCT_IN_CART_COUNTER,
   LAST_IN_STORE,
+  UPDATE_PRODUCTS_IN_MAGAZINE,
   AA
 } from "../actions/actions";
 import dataJson from "../Data.json";
@@ -86,6 +87,25 @@ const shopReducer = function(state = initialState, action) {
     });
   }
 
+  function updateMagazine(state) {
+    // Object.keys(obj).forEach(function(key) {
+    //   if ("object" === typeof obj[key] && !Array.isArray(obj[key])) {
+    //     updateMagazine(targetObject[key], obj[key]);
+    //   } else if ("string" === typeof obj[key] || "number" === typeof obj[key]) {
+    //     targetObject[key] = obj[key];
+    //   }
+    // });
+    let newState = state.data.map(item =>
+      Object.assign({}, state.data, state.cart)
+    );
+
+    // state.data[0].count = state.cart[0].count;
+    return Object.assign({}, state, {
+      data: { ...newState },
+      cart: []
+    });
+  }
+
   function aa(action) {
     const ddd = action.active;
     const bbb = action.by;
@@ -146,7 +166,6 @@ const shopReducer = function(state = initialState, action) {
       return Object.assign({}, state, { selectedProduct });
 
     case ADD_TO_CART:
-      let count = 0;
       const choosenProduct = state.data.find(
         product => product.id === action.id
       );
@@ -182,7 +201,7 @@ const shopReducer = function(state = initialState, action) {
           });
         }
       } else {
-        choosenProduct.count = count + 1;
+        choosenProduct.count = choosenProduct.count + 1;
         return Object.assign({}, state, {
           cart: [...state.cart, choosenProduct]
         });
@@ -207,6 +226,9 @@ const shopReducer = function(state = initialState, action) {
 
     case PRODUCT_IN_CART_COUNTER:
       return productInCartCounter(state, action);
+
+    case UPDATE_PRODUCTS_IN_MAGAZINE:
+      return updateMagazine(state);
 
     case AA:
       return aa(action);

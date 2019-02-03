@@ -8,7 +8,13 @@ const ProductList = props => (
     {props.item.map(item => {
       return (
         <Link className="link" to={"/product/" + item.id} key={item.id}>
-          <Product name={item.name} price={item.price} picture={item.picture} />
+          <Product
+            name={item.name}
+            price={item.price}
+            picture={item.picture}
+            count={item.count}
+            inMagazine={item.inMagazine}
+          />
         </Link>
       );
     })}

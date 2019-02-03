@@ -21,6 +21,10 @@ class CartContainer extends Component {
     return this.props.actions.productInCartCount(id, value);
   };
 
+  handleClickUpdateMagazine = () => {
+    return this.props.actions.updateProductsInMagazine();
+  };
+
   render() {
     return (
       <Cart
@@ -28,6 +32,7 @@ class CartContainer extends Component {
         cart={this.props.cart}
         clickDelProduct={this.handleClickDelProduct}
         clickCartCounter={this.handleClickCartCounter}
+        clickUpdateMagazine={this.handleClickUpdateMagazine}
       />
     );
   }
