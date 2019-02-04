@@ -19,7 +19,6 @@ render(
     <BrowserRouter>
       <MainLayout>
         <Switch>
-          {/* <Redirect from="/" to="/1/name/asc" /> */}
           <Route exact path={"/"} component={HomeLayout} />
           <Route exact path={"/:id/:by/:order"} component={HomeLayout} />
           <Route path={"/cart"} component={Cart} />
@@ -30,7 +29,7 @@ render(
           <Route path={"/error"} render={() => <PageNotFound />} />
           <Redirect to={"/error"} />
         </Switch>
-        <DevTols />
+        {/* <DevTols /> */}
       </MainLayout>
     </BrowserRouter>
   </Provider>,

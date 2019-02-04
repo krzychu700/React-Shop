@@ -39,33 +39,40 @@ class ProductListContainer extends Component {
         order: this.props.match.params.order
       });
     }
-    // if (
-    //   parseInt(this.props.match.params.id, 10) > 3 ||
-    //   this.props.match.params.by !== "name" ||
-    //   this.props.match.params.by !== "price" ||
-    //   this.props.match.params.order !== "asc" ||
-    //   this.props.match.params.order !== "desc"
-    // ) {
-    //   console.log("sdadsfas");
-    //   return <Redirect to="/error" />;
-    // }
+    if (liczba > this.props.page && this.props.page !== 0) {
+      this.props.history.push("/error");
+    }
   }
 
   click(e) {
     this.props.actions.getProduct(e.target.id);
   }
 
-  renderRedirect = () => {
-    if (parseInt(this.props.match.params.id, 10) > this.props.page) {
-      console.log(this.props.page);
-      return <Redirect to="/error" />;
+  renderRedirectBy = () => {
+    switch (this.props.match.params.by) {
+      case "name":
+        break;
+      case "price":
+        break;
+      default:
+        return <Redirect to="/error" />;
+    }
+  };
+
+  renderRedirectOrder = () => {
+    switch (this.props.match.params.order) {
+      case "asc":
+        break;
+      case "desc":
+        break;
+      default:
+        return <Redirect to="/error" />;
     }
   };
 
   render() {
     return (
       <div className="productListArea">
-        {this.renderRedirect()}
         <ProductList
           item={this.props.itemList}
           click={this.click}
@@ -101,6 +108,9 @@ class ProductListContainer extends Component {
             </Link>
           </ul>
         </div>
+
+        {this.renderRedirectBy()}
+        {this.renderRedirectOrder()}
       </div>
     );
   }

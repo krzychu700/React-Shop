@@ -31,12 +31,12 @@ const shopReducer = function(state = initialState, action) {
   function sortProduct(state, action) {
     const sortBy = action.sortParams.by;
     const sortOrder = action.sortParams.order;
-    // if (
-    //   sortBy === state.sortParams.by &&
-    //   sortOrder === state.sortParams.order
-    // ) {
-    //   return state;
-    // }
+    if (
+      sortBy === state.sortParams.by &&
+      sortOrder === state.sortParams.order
+    ) {
+      return state;
+    }
     const sortedItem = state.data.sort((a, b) => {
       if (sortBy === "price" && sortOrder === "desc") {
         return b.price - a.price;
@@ -46,7 +46,7 @@ const shopReducer = function(state = initialState, action) {
         return a.name.localeCompare(b.name);
       } else if (sortBy === "name" && sortOrder === "desc") {
         return b.name.localeCompare(a.name);
-      }
+      } else return null;
     });
     return Object.assign({}, state, {
       itemList: [...sortedItem],
@@ -76,7 +76,7 @@ const shopReducer = function(state = initialState, action) {
   //function responsible for calculation of number of proper product in cart
 
   function productInCartCounter(state, action) {
-    const objIndex = state.cart.findIndex(product => product.id == action.id);
+    const objIndex = state.cart.findIndex(product => product.id === action.id);
     const updatedObj = {
       ...state.cart[objIndex],
       count: (state.cart[objIndex].count += action.value)
@@ -112,7 +112,6 @@ const shopReducer = function(state = initialState, action) {
 
   switch (action.type) {
     case GET_DATA: {
-      console.log("1");
       const lastItems = dataJson.filter(product => {
         return product.inMagazine <= 3;
       });
@@ -124,7 +123,7 @@ const shopReducer = function(state = initialState, action) {
           page++;
         }
       } else {
-        page = 3;
+        page = 1;
       }
       return Object.assign({}, state, {
         lastItems,
@@ -137,7 +136,6 @@ const shopReducer = function(state = initialState, action) {
     }
 
     case GET_PRODUCTS_ON_PAGE: {
-      console.log("2");
       return getProductsOnPage(state);
     }
 
@@ -204,9 +202,7 @@ const shopReducer = function(state = initialState, action) {
           });
         }
       } else {
-        return Object.assign({}, state, {
-          ...state
-        });
+        return state;
       }
 
     case DEL_FROM_CART:

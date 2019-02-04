@@ -63,8 +63,12 @@ class SideBar extends Component {
           </Link>
         </ul>
         <div>
-          <h3 className="sliderTitle"> Ostatnie sztuki!:</h3>
-          <Carousel click={this.click} lastItems={this.props.lastItems} />
+          <h3 className="sliderTitle">
+            {this.props.lastItems.length === 0 ? null : "Ostatnie sztuki!:"}
+          </h3>
+          {this.props.lastItems.length === 0 ? null : (
+            <Carousel click={this.click} lastItems={this.props.lastItems} />
+          )}
         </div>
       </div>
     );

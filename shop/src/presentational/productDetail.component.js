@@ -16,13 +16,7 @@ const ProductDetail = props => (
         <p className="productDetailPrice">{`$${parseFloat(
           props.product.price
         ).toFixed(2)}`}</p>
-        <p className="productDetailText">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec est
-          id nisi sodales ultrices in bibendum dui. Donec venenatis varius
-          egestas. Maecenas malesuada lectus sed nibh ullamcorper semper. Aenean
-          congue bibendum sapien a faucibus. Curabitur non ante a magna maximus
-          accumsan.
-        </p>
+        <p className="productDetailText">{props.product.description}</p>
         <button
           className={
             props.product.inMagazine - props.product.count === 0 ||

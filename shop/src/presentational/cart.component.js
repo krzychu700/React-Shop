@@ -19,10 +19,7 @@ const Cart = props => (
               <div className="cartProductDescriptions">
                 <div className="cartProductDescriptionsContainer">
                   <p className="cartProductTitle">{product.name}</p>
-                  <p className="cartProductText">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla nec est id nisi sodales ultrices in bibendum dui.
-                  </p>
+                  <p className="cartProductText">{product.description}</p>
                 </div>
                 <div className="cartProductBuyingArea">
                   <div className="cartProductBuyingContainer">
