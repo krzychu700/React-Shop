@@ -7,10 +7,6 @@ const PageNumbers = props => (
       <Link
         className="link"
         to={
-          // console.log(props.match.params)
-          // typeof jsvariable == "undefined"
-          //   ? "/error"
-          //   :
           "/" +
           parseInt(item + 1) +
           "/" +

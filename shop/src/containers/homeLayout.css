@@ -35,3 +35,13 @@
 .subpageTitle {
   margin-bottom: 20px;
 }
+
+.notFoundTextArea {
+  position: absolute;
+  cursor: pointer;
+  border: solid 2px white;
+  border-radius: 10px;
+  top: 550px;
+  background-color: white;
+  height: 30px;
+}
