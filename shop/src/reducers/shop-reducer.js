@@ -59,9 +59,15 @@ const shopReducer = function(state = initialState, action) {
 
   //function responsible for slicing data to show proper number of products on page and in slider
   function getProductsOnPage(state) {
+    let displLength = 6;
+    if (window.screen.availWidth > 768) {
+      displLength = 6;
+    } else if (window.screen.availWidth < 426) {
+      displLength = 4;
+    }
     const productsOnActivePage = state.data.slice(
-      (state.active - 1) * 6,
-      state.active * 6
+      (state.active - 1) * displLength,
+      state.active * displLength
     );
     const lastItems = state.data.filter(
       product => product.inMagazine <= 3 && product.inMagazine > 0
@@ -112,14 +118,23 @@ const shopReducer = function(state = initialState, action) {
 
   switch (action.type) {
     case GET_DATA: {
+      let displLength = 6;
+      if (window.screen.availWidth > 768) {
+        displLength = 6;
+      } else if (window.screen.availWidth < 426) {
+        displLength = 4;
+      }
       const lastItems = dataJson.filter(product => {
         return product.inMagazine <= 3;
       });
       const productListLength = state.data.length;
       let page = state.page;
-      if (productListLength > 6 && page <= productListLength / 6) {
+      if (
+        productListLength > displLength &&
+        page <= productListLength / displLength
+      ) {
         let i = 0;
-        for (i = 0; i < productListLength; i = i + 6) {
+        for (i = 0; i < productListLength; i = i + displLength) {
           page++;
         }
       } else {
