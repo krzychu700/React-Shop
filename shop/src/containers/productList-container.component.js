@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link, Redirect } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import * as actions from "../actions/actions";
 import ProductList from "../presentational/productList.component";
 import { bindActionCreators } from "redux";

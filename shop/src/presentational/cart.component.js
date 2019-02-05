@@ -74,6 +74,7 @@ const Cart = props => (
       </div>
       <div className={props.cart.length === 0 ? "hide" : "cartFinishArea"}>
         <p className="cartProduct cartProduct--grey">kod rabatowy</p>
+        <input placeholder="Twój kod rabatowy" />
         <p className="cartProduct">
           TOTAL:
           {` $${parseFloat(
@@ -83,7 +84,7 @@ const Cart = props => (
           ).toFixed(2)} `}
         </p>
         <button
-          className="buttonBuy"
+          className="buttonCart"
           onClick={() => props.clickUpdateMagazine()}
         >
           Zapłać

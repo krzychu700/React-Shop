@@ -68,5 +68,7 @@
 .sold {
   transform: rotate(-45deg);
   font-size: 55px;
+  border-radius: 5px;
+  background-color: rgba(236, 228, 228, 0.5);
   color: black;
 }

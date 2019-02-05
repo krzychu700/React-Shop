@@ -76,6 +76,12 @@
   cursor: pointer;
 }
 
+.buttonCart:hover {
+  background-color: darkgrey;
+  color: #000000;
+  transition: 1s all;
+}
+
 .buttonCart--empty {
   width: 400px;
   background-color: rgb(105, 107, 103);
