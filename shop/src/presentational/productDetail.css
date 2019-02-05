@@ -88,3 +88,41 @@
   color: black;
   cursor: none;
 }
+
+@media(min-width: 426px) and (max-width: 768px) {
+  .productDetailContainer {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    height: 550px;
+  }
+
+  .productDetailImageArea {
+    height: 250px;
+    width: 250px;
+  }
+
+  .productDetailTitle {
+    width: auto;
+  }
+
+  .productDetailPrice {
+    width: auto;
+  }
+
+  .productDetailDescriptions {
+    max-height: 100%;
+    height: auto;
+    padding-left: 0;
+    align-items: center;
+  }
+
+  .productDetailText {
+    max-height: 250px;
+    height: auto;
+  }
+
+  .buttonCart {
+    position: absolute;
+    bottom: 240px;
+  }
+}

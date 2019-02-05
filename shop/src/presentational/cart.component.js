@@ -84,7 +84,7 @@ const Cart = props => (
           ).toFixed(2)} `}
         </p>
         <button
-          className="buttonCart"
+          className="buttonBuy"
           onClick={() => props.clickUpdateMagazine()}
         >
           Zapłać
