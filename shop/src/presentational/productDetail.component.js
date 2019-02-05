@@ -7,7 +7,7 @@ const ProductDetail = props => (
       <div className="productDetailImageArea">
         <img
           className="productDetailImage"
-          src={props.product.picture}
+          src={process.env.PUBLIC_URL + `${props.product.picture}`}
           alt={`product${props.product.id}`}
         />
       </div>

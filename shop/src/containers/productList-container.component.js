@@ -40,10 +40,10 @@ class ProductListContainer extends Component {
       });
     }
     if (this.props.match.url === "") {
-      this.props.history.push("1/name/desc");
+      this.props.history.push("/1/name/desc");
     }
     if (this.props.history.location.pathname === "/") {
-      this.props.history.push("1/name/desc");
+      this.props.history.push("/1/name/desc");
     } else if (
       this.props.match.params.by !== "name" &&
       this.props.match.params.by !== "price"

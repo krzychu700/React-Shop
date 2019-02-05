@@ -12,7 +12,7 @@ const Cart = props => (
               <div className="cartImageArea">
                 <img
                   className="cartProductImage"
-                  src={product.picture}
+                  src={process.env.PUBLIC_URL + `${product.picture}`}
                   alt={`product${product.id}`}
                 />
               </div>

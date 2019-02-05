@@ -26,8 +26,8 @@ const DemoCarousel = props => {
             <Link className="link" to={"/product/" + item.id}>
               <img
                 className="d-block w-100 carouselImage"
-                src={item.picture}
-                alt="First slide"
+                src={process.env.PUBLIC_URL + `${item.picture}`}
+                alt="First slide 1"
               />
               <Carousel.Caption>
                 <p className="carouselProduct">{item.name}</p>

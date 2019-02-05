@@ -7,7 +7,11 @@ export const Menu = props => {
   return (
     <div className="menu">
       <div className="logoArea">
-        <img className="logoPicture" src="/img/logo.png" alt="logo" />
+        <img
+          className="logoPicture"
+          src={process.env.PUBLIC_URL + `/img/logo.png`}
+          alt="logo1"
+        />
       </div>
 
       <div className="menuArea">

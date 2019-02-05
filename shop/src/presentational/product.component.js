@@ -5,7 +5,11 @@ const Product = props => {
   return (
     <div className="product" key={props.id}>
       <div className="productPictureArea">
-        <img className="productPicture" src={props.picture} alt="1" />
+        <img
+          className="productPicture"
+          src={process.env.PUBLIC_URL + `${props.picture}`}
+          alt={props.id}
+        />
       </div>
       <div className="productTextArea">
         <div className="productName">{props.name} </div>
