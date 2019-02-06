@@ -16,11 +16,15 @@ import Cart from "./containers/cart-container.component";
 
 render(
   <Provider store={store}>
-    <BrowserRouter basename="/React-Shop#">
+    <BrowserRouter basename="/React-Shop#/">
       <MainLayout>
         <Switch>
-          <Route exact path={"/"} component={HomeLayout} />
-          <Route exact path={"/:id/:by/:order"} component={HomeLayout} />
+          <Route path={"/"} exact component={HomeLayout} />
+          <Route
+            path="/:id/:by/:order"
+            render={routeProps => <HomeLayout {...routeProps} />}
+          />
+          {/* <Route exact path={"/:id/:by/:order"} component={HomeLayout} /> */}
           <Route path={"/cart"} component={Cart} />
           <Route path={"/product/:id"} component={ProductDetail} />
           <Route path={"/faq"} component={FAQ} />
