@@ -35,7 +35,7 @@ export const Menu = props => {
                 color: "black"
               }}
               className="link"
-              to="/faq"
+              to={"/faq"}
             >
               FAQ
             </NavLink>
@@ -47,7 +47,7 @@ export const Menu = props => {
                 color: "black"
               }}
               className="link"
-              to="/eula"
+              to={"/eula"}
             >
               Regulamin
             </NavLink>
@@ -59,7 +59,7 @@ export const Menu = props => {
                 color: "black"
               }}
               className="link"
-              to="/contact"
+              to={"/contact"}
             >
               Kontakt
             </NavLink>
@@ -71,7 +71,7 @@ export const Menu = props => {
                 color: "black"
               }}
               className="link"
-              to="/cart"
+              to={"/cart"}
             >
               <i className="fas fa-shopping-bag cartIcon" />
               <div

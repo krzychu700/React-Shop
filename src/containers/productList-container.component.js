@@ -39,25 +39,25 @@ class ProductListContainer extends Component {
         order: this.props.match.params.order
       });
     }
-    // if (this.props.match.url === "") {
-    //   this.props.history.push("/1/name/desc");
-    // }
-    // if (this.props.history.location.pathname === "/") {
-    //   this.props.history.push("/1/name/desc");
-    // } else if (
-    //   this.props.match.params.by !== "name" &&
-    //   this.props.match.params.by !== "price"
-    // ) {
-    //   this.props.history.push("/error");
-    // } else if (
-    //   this.props.match.params.order !== "desc" &&
-    //   this.props.match.params.order !== "asc"
-    // ) {
-    //   this.props.history.push("/error");
-    // }
-    // if (liczba > this.props.page && this.props.page !== 0) {
-    //   this.props.history.push("/error");
-    // }
+    if (this.props.match.url === "") {
+      this.props.history.push("/1/name/desc");
+    }
+    if (this.props.history.location.pathname === "/") {
+      this.props.history.push("/1/name/desc");
+    } else if (
+      this.props.match.params.by !== "name" &&
+      this.props.match.params.by !== "price"
+    ) {
+      this.props.history.push("/error");
+    } else if (
+      this.props.match.params.order !== "desc" &&
+      this.props.match.params.order !== "asc"
+    ) {
+      this.props.history.push("/error");
+    }
+    if (liczba > this.props.page && this.props.page !== 0) {
+      this.props.history.push("/error");
+    }
   }
 
   click(e) {

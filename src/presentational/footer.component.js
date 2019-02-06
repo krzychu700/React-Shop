@@ -38,7 +38,7 @@ export const Footer = props => {
                 color: "black"
               }}
               className="link"
-              to="/faq"
+              to={"/faq"}
             >
               FAQ
             </NavLink>
@@ -50,7 +50,7 @@ export const Footer = props => {
                 color: "black"
               }}
               className="link"
-              to="/eula"
+              to={"/eula"}
             >
               Regulamin
             </NavLink>
@@ -62,7 +62,7 @@ export const Footer = props => {
                 color: "black"
               }}
               className="link"
-              to="/contact"
+              to={"/contact"}
             >
               Kontakt
             </NavLink>

@@ -16,15 +16,14 @@ import Cart from "./containers/cart-container.component";
 
 render(
   <Provider store={store}>
-    <BrowserRouter basename="/React-Shop">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <MainLayout>
         <Switch>
           <Route path={"/"} exact component={HomeLayout} />
           <Route
-            path="/:id/:by/:order"
+            path={"/:id/:by/:order"}
             render={routeProps => <HomeLayout {...routeProps} />}
           />
-          {/* <Route exact path={"/:id/:by/:order"} component={HomeLayout} /> */}
           <Route path={"/cart"} component={Cart} />
           <Route path={"/product/:id"} component={ProductDetail} />
           <Route path={"/faq"} component={FAQ} />
@@ -33,7 +32,7 @@ render(
           <Route path={"/error"} render={() => <PageNotFound />} />
           <Redirect from="*" to={"/error"} />
         </Switch>
-        <DevTols />
+        {/* <DevTols /> */}
       </MainLayout>
     </BrowserRouter>
   </Provider>,
