@@ -30,6 +30,7 @@ class CartContainer extends Component {
       <Cart
         product={this.props.selectedProduct}
         cart={this.props.cart}
+        inCart={this.props.inCart}
         clickDelProduct={this.handleClickDelProduct}
         clickCartCounter={this.handleClickCartCounter}
         clickUpdateMagazine={this.handleClickUpdateMagazine}
@@ -41,7 +42,8 @@ class CartContainer extends Component {
 let mapStateToProps = function(store) {
   return {
     selectedProduct: store.shopReducer.selectedProduct,
-    cart: store.shopReducer.cart
+    cart: store.shopReducer.cart,
+    inCart: store.shopReducer.inCart
   };
 };
 

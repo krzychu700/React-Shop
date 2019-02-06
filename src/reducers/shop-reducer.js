@@ -23,6 +23,7 @@ const initialState = {
   },
   selectedProduct: {},
   cart: [],
+  inCart: 0,
   lastItems: []
 };
 
@@ -70,7 +71,7 @@ const shopReducer = function(state = initialState, action) {
       state.active * displLength
     );
     const lastItems = state.data.filter(
-      product => product.inMagazine <= 3 && product.inMagazine > 0
+      product => product.inMagazine <= 10 && product.inMagazine > 0
     );
 
     return Object.assign({}, state, {
@@ -87,12 +88,14 @@ const shopReducer = function(state = initialState, action) {
       ...state.cart[objIndex],
       count: (state.cart[objIndex].count += action.value)
     };
+    const inCart = (state.inCart += action.value);
     return Object.assign({}, state, {
       cart: [
         ...state.cart.slice(0, objIndex),
         updatedObj,
         ...state.cart.slice(objIndex + 1)
-      ]
+      ],
+      inCart
     });
   }
 
@@ -112,7 +115,8 @@ const shopReducer = function(state = initialState, action) {
     }
     return Object.assign({}, state, {
       ...state,
-      cart: []
+      cart: [],
+      inCart: 0
     });
   }
 
@@ -125,7 +129,7 @@ const shopReducer = function(state = initialState, action) {
         displLength = 3;
       }
       const lastItems = dataJson.filter(product => {
-        return product.inMagazine <= 3;
+        return product.inMagazine <= 10;
       });
       const productListLength = state.data.length;
       let page = state.page;
@@ -173,7 +177,6 @@ const shopReducer = function(state = initialState, action) {
 
     case ADD_TO_CART:
       let count = 0;
-
       const choosenProduct = state.data.find(
         product => product.id === action.id
       );
@@ -186,6 +189,7 @@ const shopReducer = function(state = initialState, action) {
             const objIndex = state.cart.findIndex(
               product => product.id === action.id
             );
+            let inCart = state.inCart + 1;
             const updatedObj = {
               ...state.cart[objIndex],
               count: state.cart[objIndex].count + 1
@@ -199,7 +203,8 @@ const shopReducer = function(state = initialState, action) {
               selectedProduct: {
                 ...state.selectedProduct,
                 count: state.selectedProduct.count + 1
-              }
+              },
+              inCart
             });
           } else {
             return Object.assign({}, state, {
@@ -211,8 +216,10 @@ const shopReducer = function(state = initialState, action) {
           }
         } else {
           state.selectedProduct.count = count + 1;
+          let inCart = state.inCart + 1;
           return Object.assign({}, state, {
             cart: [...state.cart, choosenProduct],
+            inCart,
             ...selectedProduct
           });
         }

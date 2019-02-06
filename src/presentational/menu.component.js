@@ -77,11 +77,7 @@ export const Menu = props => {
               <div
                 className={props.cart.length > 0 ? "productsInCart" : "hide"}
               >
-                {parseFloat(
-                  props.cart.reduce(function(previousValue, currentValue) {
-                    return previousValue + currentValue.count;
-                  }, 0)
-                )}
+                {props.inCart}
               </div>
             </NavLink>
           </li>

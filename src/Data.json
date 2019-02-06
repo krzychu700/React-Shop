@@ -4,7 +4,7 @@
     "price": 10.99,
     "picture": "/img/1.jpg",
     "description": "Eiusmod tempor officia incididunt eu. Laboris mollit ex commodo velit eu nulla voluptate officia. Do nulla laborum eu cillum aliquip irure qui sint enim ut do.",
-    "inMagazine": 3,
+    "inMagazine": 11,
     "sold": 0,
     "count": 0
   },
@@ -24,7 +24,7 @@
     "price": 203.99,
     "picture": "/img/3.jpg",
     "description": "Veniam deserunt laborum dolor do exercitation ut deserunt. Laborum eiusmod ut aute nisi veniam. Excepteur et excepteur ullamco commodo ut quis. Duis do reprehenderit id eu qui tempor",
-    "inMagazine": 2,
+    "inMagazine": 8,
     "sold": 0,
     "count": 0
   },
@@ -44,7 +44,7 @@
     "price": 999.99,
     "picture": "/img/5.jpg",
     "description": "Minim aute laboris mollit aliquip sit do eiusmod. Id culpa sint aute qui ex nostrud incididunt proident. Excepteur reprehenderit cillum labore dolor sunt in esse.",
-    "inMagazine": 3,
+    "inMagazine": 5,
     "sold": 0,
     "count": 0
   },
@@ -54,7 +54,7 @@
     "price": 199.99,
     "picture": "/img/6.jpeg",
     "description": "Labore voluptate velit adipisicing magna amet consequat elit aliquip mollit. Dolor aliquip labore nisi adipisicing nisi amet sint. Non ea nostrud amet exercitation anim esse dolor.",
-    "inMagazine": 5,
+    "inMagazine": 8,
     "sold": 0,
     "count": 0
   },
@@ -64,7 +64,7 @@
     "price": 129.99,
     "picture": "/img/7.jpeg",
     "description": "Eiusmod laborum deserunt aute quis ex. Minim esse occaecat id veniam do. Et id voluptate ex officia excepteur et. Anim anim officia reprehenderit eu incididunt veniam deserunt nisi.",
-    "inMagazine": 3,
+    "inMagazine": 7,
     "sold": 0,
     "count": 0
   },
@@ -75,6 +75,46 @@
     "picture": "/img/8.jpeg",
     "description": "Duis esse amet irure id esse aliquip amet aute culpa irure anim laborum. Ipsum est ad et excepteur. Aute eiusmod consectetur ipsum et dolore tempor.",
     "inMagazine": 13,
+    "sold": 0,
+    "count": 0
+  },
+  {
+    "id": "bgt5670kjgm8ih5543dfby92ks",
+    "name": "aparat",
+    "price": 199.99,
+    "picture": "/img/9.jpeg",
+    "description": "Labore voluptate velit adipisicing magna amet consequat elit aliquip mollit. Dolor aliquip labore nisi adipisicing nisi amet sint. Non ea nostrud amet exercitation anim esse dolor.",
+    "inMagazine": 12,
+    "sold": 0,
+    "count": 0
+  },
+  {
+    "id": "zxdd4568ihgd457iknfdf679fdf3",
+    "name": "telefon",
+    "price": 499.99,
+    "picture": "/img/10.jpeg",
+    "description": "Veniam deserunt laborum dolor do exercitation ut deserunt. Laborum eiusmod ut aute nisi veniam. Excepteur et excepteur ullamco commodo ut quis. Duis do reprehenderit id eu qui tempor",
+    "inMagazine": 9,
+    "sold": 0,
+    "count": 0
+  },
+  {
+    "id": "zxdd4454gbftg565hgbvz3246bzx2",
+    "name": "telefon",
+    "price": 699.99,
+    "picture": "/img/11.jpeg",
+    "description": "Labore voluptate velit adipisicing magna amet consequat elit aliquip mollit. Dolor aliquip labore nisi adipisicing nisi amet sint. Non ea nostrud amet exercitation anim esse dolor.",
+    "inMagazine": 13,
+    "sold": 0,
+    "count": 0
+  },
+  {
+    "id": "009oksai983hdsxknhj7t2873nba",
+    "name": "pierścionek",
+    "price": 189.99,
+    "picture": "/img/12.jpeg",
+    "description": "Labore voluptate velit adipisicing magna amet consequat elit aliquip mollit. Dolor aliquip labore nisi adipisicing nisi amet sint. Non ea nostrud amet exercitation anim esse dolor.",
+    "inMagazine": 5,
     "sold": 0,
     "count": 0
   }
