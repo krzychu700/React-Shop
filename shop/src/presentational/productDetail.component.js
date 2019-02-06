@@ -26,9 +26,10 @@ const ProductDetail = props => (
           }
           onClick={() => props.handleClickAddToCart(props.product.id)}
         >
-          {props.product.inMagazine - props.product.count === 0 ||
-          props.product.inMagazine === 0
-            ? "Wybacz, brak więcej produktów w magazynie"
+          {props.product.inMagazine - props.product.count === 0
+            ? // ||
+              // props.product.inMagazine === 0
+              "Wybacz, brak więcej produktów w magazynie"
             : "Dodaj do koszyka"}
         </button>
       </div>

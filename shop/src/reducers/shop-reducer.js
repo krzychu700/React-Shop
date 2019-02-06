@@ -63,7 +63,7 @@ const shopReducer = function(state = initialState, action) {
     if (window.screen.availWidth > 768) {
       displLength = 6;
     } else if (window.screen.availWidth < 426) {
-      displLength = 4;
+      displLength = 3;
     }
     const productsOnActivePage = state.data.slice(
       (state.active - 1) * displLength,
@@ -122,7 +122,7 @@ const shopReducer = function(state = initialState, action) {
       if (window.screen.availWidth > 768) {
         displLength = 6;
       } else if (window.screen.availWidth < 426) {
-        displLength = 4;
+        displLength = 3;
       }
       const lastItems = dataJson.filter(product => {
         return product.inMagazine <= 3;
@@ -239,5 +239,3 @@ const shopReducer = function(state = initialState, action) {
 };
 
 export default shopReducer;
-
-//index.js - czy dobrze, ze najpierw GET_PRODUCTS_ON_PAGE

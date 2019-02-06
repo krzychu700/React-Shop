@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./cart.css";
 
 const Cart = props => (
@@ -10,15 +11,19 @@ const Cart = props => (
           <div className="cartComponent" key={product.id}>
             <div className="cartContainer">
               <div className="cartImageArea">
-                <img
-                  className="cartProductImage"
-                  src={process.env.PUBLIC_URL + `${product.picture}`}
-                  alt={`product${product.id}`}
-                />
+                <Link className="link" to={"/product/" + product.id}>
+                  <img
+                    className="cartProductImage"
+                    src={process.env.PUBLIC_URL + `${product.picture}`}
+                    alt={`product${product.id}`}
+                  />
+                </Link>
               </div>
               <div className="cartProductDescriptions">
                 <div className="cartProductDescriptionsContainer">
-                  <p className="cartProductTitle">{product.name}</p>
+                  <Link className="link" to={"/product/" + product.id}>
+                    <p className="cartProductTitle">{product.name}</p>
+                  </Link>
                   <p className="cartProductText">{product.description}</p>
                 </div>
                 <div className="cartProductBuyingArea">
