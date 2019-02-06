@@ -16,7 +16,7 @@ import Cart from "./containers/cart-container.component";
 
 render(
   <Provider store={store}>
-    <BrowserRouter basename={"/React-Shop#/"}>
+    <BrowserRouter basename={"/React-Shop/#/"}>
       <MainLayout>
         <Switch>
           <Route path={"/"} exact component={HomeLayout} />
@@ -30,7 +30,7 @@ render(
           <Route path={"/eula"} component={Eula} />
           <Route path={"/contact"} component={Contact} />
           <Route path={"/error"} render={() => <PageNotFound />} />
-          <Redirect from="*" to={"/error"} />
+          <Redirect to={"/error"} />
         </Switch>
         {/* <DevTols /> */}
       </MainLayout>
