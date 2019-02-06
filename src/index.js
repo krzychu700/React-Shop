@@ -16,7 +16,7 @@ import Cart from "./containers/cart-container.component";
 
 render(
   <Provider store={store}>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={"/React-Shop#/"}>
       <MainLayout>
         <Switch>
           <Route path={"/"} exact component={HomeLayout} />

@@ -5,7 +5,7 @@ To create this page I used [Create React App] and also [React-Router-Dom], [Reac
 
 ## Live version:
 
-Please see: [here](https://krzychu700.github.io/React-Shop)
+Please see: [here](https://krzychu700.github.io/React-Shop#/)
 
 ## Available Scripts
 
